@@ -34,3 +34,7 @@ Route::get('/signup', function () {
     return view('screens/signup');
 });
 
+Route::get('/product-detail', function () {
+    return view('screens/product-detail');
+});
+

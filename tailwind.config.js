@@ -7,8 +7,12 @@ export default {
     ],
     theme: {
         extend: {
+            backgroundImage: {
+                hero: "url('/public/image/hero.png')",
+            },
             colors: {
                 bg: "rgba(var(--color-bg), <alpha-value>)",
+                primaryDark: "#EAE5D5",
                 secondary: "rgba(var(--color-secondary), <alpha-value>)",
                 accent: "rgba(var(--color-accent), <alpha-value>)",
             },
@@ -36,5 +40,5 @@ export default {
             },
           },
         ],
-      },
+    },
 };
