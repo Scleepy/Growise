@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer{
+    :root{
+        color-scheme: light dark;
+        color: rgba(4, 13, 18, 1);
+        background-color: rgba(245, 243, 232, 1);
+
+        --color-bg: 245, 243, 232;
+        --color-accent: 247, 135, 100;
+        --color-footer: 0, 91, 73;
+    }
+}
+
+@font-face {
+    font-family: DMSerifDisplay;
+    src: url("../../public/font/DM_Serif_Display/DMSerifDisplay-Regular.ttf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}

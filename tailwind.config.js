@@ -6,7 +6,16 @@ export default {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                bg: "rgba(var(--color-bg), <alpha-value>)",
+                accent: "rgba(var(--color-accent), <alpha-value>)",
+                footer: "rgba(var(--color-footer), <alpha-value>)",
+            },
+            fontFamily: {
+                dmserif: ["DMSerifDisplay"],
+            },
+        },
     },
     plugins: [],
 };
