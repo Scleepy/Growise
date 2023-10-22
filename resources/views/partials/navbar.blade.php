@@ -12,13 +12,13 @@
                 <img src="<?= asset('icon/drop_down.svg') ?>" alt="">
             </a>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 w-52 font-josefinsans">
-            <li><a href="/catalogue">Reusable Items</a></li>
-            <li><a href="/catalogue">Home Goods</a></li>
-            <li><a href="/catalogue">Personal Care</a></li>
-            <li><a href="/catalogue">Fashion</a></li>
-            <li><a href="/catalogue">Energy Solutions</a></li>
-            <li><a href="/catalogue">Up/Recycled Goods</a></li>
-            <li><a href="/catalogue">Food</a></li>
+                <li><a href="/catalogue">Reusable Items</a></li>
+                <li><a href="/catalogue">Home Goods</a></li>
+                <li><a href="/catalogue">Personal Care</a></li>
+                <li><a href="/catalogue">Fashion</a></li>
+                <li><a href="/catalogue">Energy Solutions</a></li>
+                <li><a href="/catalogue">Up/Recycled Goods</a></li>
+                <li><a href="/catalogue">Food</a></li>
             </ul>
         </div>
         <li>
@@ -42,6 +42,40 @@
 
     <div class="flex gap-10 justify-center items-center">
         <a href="/cart"><img src="<?= asset('icon/bag_fill.svg') ?>" alt=""></a>
-        <a href="/user"><img src="<?= asset('icon/user_icon.svg') ?>" alt=""></a>
+
+        <div class="dropdown dropdown-end dropdown-hover">
+            <a tabindex="0" class="inline-flex mt-[0.5rem]" href="/user">
+                <img src="<?= asset('icon/user_icon.svg') ?>" alt="">
+            </a>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-4 shadow bg-base-100 w-52 font-josefinsans gap-4">
+                <div class="flex gap-4">
+                    <img src="{{ asset('icon/profile_icon.svg') }}" alt="" class="w-10 h-10">
+                    <div class="flex flex-col justify-center">
+                        <p class="font-bold">Mario Surya</p>
+                        <a href="/user" class="text-base-300 text-xs hover:text-opacity-60">View Profile</a>
+                    </div>
+                </div>
+
+
+                <div class="flex flex-col gap-1">
+                    <h1>OWO Balance</h1>
+                    <div class="flex gap-4">
+                        <img src="{{ asset('icon/owo_icon.svg') }}" alt="" class="w-10 h-10">
+                        
+                        <div>
+                            <p class="font-bold">Rp1,150,000</p>
+                            <a href="/user" class="text-base-300 text-xs hover:text-opacity-60">Topup Balance</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full bg-base-300 h-[0.1rem]"></div>
+
+                <div class="mt-[-0.5rem]">
+                    <li><a href="/order" class="font-semibold">My Orders</a></li>
+                    <li><a href="/logout" class="text-red-500 font-semibold hover:text-red-500">Logout</a></li>
+                </div>
+            </ul>
+        </div>
     </div>
 </div>

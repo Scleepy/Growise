@@ -11,6 +11,11 @@
         --color-bg: 245, 243, 232;
         --color-secondary: 0, 91, 73;
         --color-accent: 247, 135, 100;
+
+        #dob::-webkit-calendar-picker-indicator {
+            filter: invert(100%);
+            opacity: 1;
+        }
     }
 }
 
