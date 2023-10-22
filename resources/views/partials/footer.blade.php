@@ -1,4 +1,4 @@
-<div class="bg-footer min-h-[30vh] flex flex-col pt-10 pb-4 gap-6 justify-center items-center">
+<div class="bg-secondary min-h-[30vh] flex flex-col pt-10 pb-4 gap-6 justify-center items-center">
     <div class="flex justify-around p-2 w-full">
         <div class="flex flex-col gap-4">
             <div>
