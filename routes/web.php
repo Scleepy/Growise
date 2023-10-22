@@ -26,6 +26,10 @@ Route::get('/catalogue', function () {
     return view('screens/catalogue');
 });
 
+Route::get('/order', function () {
+    return view('screens/order');
+});
+
 Route::get('/product-detail', function () {
     return view('screens/product-detail');
 });
