@@ -25,3 +25,7 @@ Route::get('/contact', function () {
 Route::get('/catalogue', function () {
     return view('screens/catalogue');
 });
+
+Route::get('/product-detail', function () {
+    return view('screens/product-detail');
+});
