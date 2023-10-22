@@ -112,7 +112,7 @@
                 <button class="btn btn-secondary font-normal normal-case px-14 text-lg rounded-none">Explore Collection</button>
             </div>
 
-            <div class="w-8/12 carousel carousel-center p-4 space-x-10">
+            <div class="w-8/12 carousel carousel-center justify-evenly p-4 space-x-10">
                 <x-best-seller-card
                     :image="'image/home/best_seller_1.jpg'"
                     :category="'Reusable Items'"
@@ -133,7 +133,7 @@
                     :title="'Brin Toothbrush'"
                     :originalPrice="'Rp. 55,000'"
                     :discountedPrice="'Rp. 24,750'"
-                />              
+                />           
             </div>
         </div>
 
