@@ -1,4 +1,6 @@
-<a href="/product">
+@props(['category', 'title', 'originalPrice', 'discountedPrice', 'image', 'url'])
+
+<a href="/{{$url}}">
     <div class="card rounded-none card-compact w-72 h-96 bg-base-100 shadow-xl flex flex-col">
         <figure class="h-80">
             <img src="{{ asset($image) }}" alt="{{ $title }}" class="object-cover w-full h-full" />

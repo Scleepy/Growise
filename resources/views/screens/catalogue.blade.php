@@ -4,7 +4,7 @@
 <div class="flex flex-col">
 
     <!-- Hero Section -->
-    <div class="hero bg-hero min-h-[50vh]">
+    <div class="hero bg-hero min-h-[50vh]" style="background-image: url({{ asset('image/hero.png') }});">
         <h1 class="text-6xl text-white">Catalogue Page</h1>
     </div>
 

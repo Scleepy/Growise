@@ -2,14 +2,14 @@
 
 @section('content')
     <div>
-        <div class="hero min-h-screen" style="background-image: url({{ asset('image/home/hero.png') }});">
+        <div class="hero min-h-screen" style="background-image: url({{ asset('image/hero.png') }});">
             <div class="hero-content text-center text-neutral-content">
               <div class="max-w-lg">
                 <h1 class="mb-5 text-5xl text-neutral">
                     GREENER CHOICES
                     BETTER TOMORROWS
                 </h1>
-                <button class="btn btn-secondary font-normal normal-case px-14 text-lg rounded-none">Explore Collection</button>
+                <a href="/catalogue" class="btn btn-secondary font-normal normal-case px-14 text-lg rounded-none">Explore Collection</a>
               </div>
             </div>
         </div>
@@ -119,6 +119,7 @@
                     :title="'Epic Totebag'"
                     :originalPrice="'Rp. 75,000'"
                     :discountedPrice="'Rp. 50,000'"
+                    :url="'catalogue'"
                 />
                 <x-best-seller-card
                     :image="'image/home/best_seller_2.jpg'"
@@ -126,6 +127,7 @@
                     :title="'Mario x Growise Bag'"
                     :originalPrice="'Rp. 750,000'"
                     :discountedPrice="'Rp. 550,000'"
+                    :url="'catalogue'"
                 />  
                 <x-best-seller-card
                     :image="'image/home/best_seller_3.png'"
@@ -133,6 +135,7 @@
                     :title="'Brin Toothbrush'"
                     :originalPrice="'Rp. 55,000'"
                     :discountedPrice="'Rp. 24,750'"
+                    :url="'catalogue'"
                 />           
             </div>
         </div>
@@ -147,14 +150,14 @@
                 :content="'Our commitment to sustainability goes hand-in-hand with our diverse product range. We offer an extensive selection of eco-friendly goods and services, making it easy for you to find everything you need in one place.'"
                 /> 
                 <x-why-us-card
-                    :title="'Diverse Selection'"
-                    :image="'icon/why_us_1.svg'"
-                    :content="'Sustainability isn\'t just a buzzword for us; it\'s our core principle. From our eco-conscious packaging to our responsible sourcing, we live and breathe sustainability, ensuring your choices align with your values.'"
-                />
-                <x-why-us-card
                     :title="'Quality Assurance'"
                     :image="'icon/why_us_2.svg'"
                     :content="'We prioritize quality and eco-consciousness. Every product and service we offer is carefully selected and scrutinized to ensure it meets our rigorous standards for sustainability, ethical production, and exceptional performance.'"
+                />
+                <x-why-us-card
+                    :title="'Sustainability at Heart'"
+                    :image="'icon/why_us_3.svg'"
+                    :content="'Sustainability isn\'t just a buzzword for us; it\'s our core principle. From our eco-conscious packaging to our responsible sourcing, we live and breathe sustainability, ensuring your choices align with your values.'"
                 />     
             </div>            
         </div>
