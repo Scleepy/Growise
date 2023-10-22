@@ -15,7 +15,7 @@
 </head>
 
 <body class="antialiased">
-    <div class="min-h-screen font-dmserif">
+    <div class="min-h-screen font-dmserif bg-bg">
         @include('partials.navbar')
 
         <div>

@@ -1,4 +1,4 @@
-<div class="flex gap-6 justify-around items-center p-6">
+<div class="flex gap-6 justify-around items-center p-6 navbar">
     <a href="/">
         <h1 class="font-medium text-4xl">Growise</h1>
     </a>
@@ -7,10 +7,20 @@
         <li>
             <a href="/">Home</a>
         </li>
-        <li class="flex justify-center items-center gap-2">
-            <a href="/catalogue">Catalogue</a>
-            <a href="/"><img src="<?= asset('icon/drop_down.svg') ?>" alt=""></a>
-        </li>
+        <div class="dropdown dropdown-hover">
+            <a tabindex="0" class="inline-flex gap-2" href="/catalogue">Catalogue
+                <img src="<?= asset('icon/drop_down.svg') ?>" alt="">
+            </a>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 w-52 font-josefinsans">
+            <li><a href="/catalogue">Reusable Items</a></li>
+            <li><a href="/catalogue">Home Goods</a></li>
+            <li><a href="/catalogue">Personal Care</a></li>
+            <li><a href="/catalogue">Fashion</a></li>
+            <li><a href="/catalogue">Energy Solutions</a></li>
+            <li><a href="/catalogue">Up/Recycled Goods</a></li>
+            <li><a href="/catalogue">Food</a></li>
+            </ul>
+        </div>
         <li>
             <a href="/contact">Contact Us</a>
         </li>

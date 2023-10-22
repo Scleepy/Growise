@@ -20,3 +20,10 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: JosefinSans;
+    src: url('../../public/font/Josefin_Sans/JosefinSans-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}

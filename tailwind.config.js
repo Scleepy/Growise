@@ -14,8 +14,9 @@ export default {
             },
             fontFamily: {
                 dmserif: ["DMSerifDisplay"],
+                josefinsans: ["JosefinSans"],
             },
         },
     },
-    plugins: [],
+    plugins: [require("daisyui")],
 };
