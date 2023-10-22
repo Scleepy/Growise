@@ -23,7 +23,19 @@
             <div class="w-full flex flex-row justify-between font-josefinsans pb-2">
                 <h3>Showing 1 - 16 of 35 results</h3>
 
-                <h3>Sort By: Price High to Low</h3>
+                <div class=" relative dropdown dropdown-hover">
+                    <a tabindex="0" class="inline-flex gap-2" href="/catalogue">Sort By
+                        <img src="<?= asset('icon/drop_down.svg') ?>" alt="">
+                    </a>
+                    <ul tabindex="0" class="absolute right-0 dropdown-content z-[1] menu p-2 shadow bg-base-100 w-52 font-josefinsans text-md">
+                        <li class="my-2">Price High to Low</li>
+                        <li class="my-2">Price Low to High</li>
+                        <li class="my-2">Stock High to Low</li>
+                        <li class="my-2">Stock Low to High</li>
+                        <li class="my-2">Popularity</li>
+                        <li class="my-2">Alphabetical</li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Product Cards -->
