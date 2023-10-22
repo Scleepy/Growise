@@ -12,8 +12,55 @@
     <div class="min-h-screen flex flex-row py-16">
 
         <!-- Filter -->
-        <div class="w-1/3 bg-black">
-            <h3>Filter</h3>
+        <!-- TODO: Fix sticky positioning -->
+        <div class="w-1/3 flex flex-col items-center select-none sticky top-50">
+            <h3 class="w-fit text-4xl">Filter</h3>
+            <form class="w-3/4 flex flex-col items-center gap-2 font-josefinsans" action="">
+                <!-- By Category -->
+                <div class="w-full my-2 flex flex-col gap-2">
+                    <h4 class="font-bold">Category</h4>
+                    <div class="flex items-center gap-4">
+                        <input class="checkbox" type="checkbox" id="reusableItem" name="reusableItem" />
+                        <label>Reusable Item</label>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <input class="checkbox" type="checkbox" id="homeGoods" name="homeGoods" />
+                        <label>Home Goods</label>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <input class="checkbox" type="checkbox" id="personalCare" name="personalCare" />
+                        <label>Personal Care</label>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <input class="checkbox" type="checkbox" id="fashion" name="fashion" />
+                        <label>Fashion</label>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <input class="checkbox" type="checkbox" id="energySolutions" name="energySolutions" />
+                        <label>Energy Solutions</label>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <input class="checkbox" type="checkbox" id="uprecycledGoods" name="uprecycledGoods" />
+                        <label>Upcycled and Recycled Goods</label>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <input class="checkbox" type="checkbox" id="food" name="food" />
+                        <label>Food</label>
+                    </div>
+                </div>
+
+                <!-- By Price -->
+                <div class="w-full flex flex-col gap-2">
+                    <h4 class="font-bold">Price Range</h4>
+                    <div class="flex flex-row justify-between items-center">
+                        <input type="text" class="w-40 h-8 bg-primaryDark border border-black outline-none text-center" placeholder="Min. Price" />
+                        <h4 class="font-extrabold">-</h4>
+                        <input type="text" class="w-40 h-8 bg-primaryDark border border-black outline-none text-center" placeholder="Max. Price" />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-secondary w-28 font-normal normal-case px-14 my-2 text-lg rounded-none">Filter</button>
+            </form>
         </div>
 
         <!-- Products -->
