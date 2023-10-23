@@ -45,3 +45,7 @@ Route::get('/product-detail', function () {
 Route::get('/admin', function () {
     return view('screens/admin');
 });
+
+Route::get('dashboard', function () {
+    return view('screens/dashboard');
+});
