@@ -42,10 +42,15 @@ Route::get('/product-detail', function () {
     return view('screens/product-detail');
 });
 
+// Admin route
 Route::get('/admin', function () {
     return view('screens/admin');
 });
 
-Route::get('dashboard', function () {
+Route::get('/admin/dashboard', function () {
     return view('screens/dashboard');
+});
+
+Route::get('/admin/product', function () {
+    return view('screens/product');
 });
