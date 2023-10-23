@@ -22,7 +22,7 @@
         </div>
 
         <!-- Product Information -->
-        <div class="w-1/3 h-fit flex flex-col gap-2 border">
+        <div class="w-1/3 h-fit flex flex-col gap-2">
 
             <!-- Deals -->
             <div class="w-full px-2 flex items-center bg-red-500">
