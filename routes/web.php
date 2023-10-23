@@ -41,3 +41,7 @@ Route::get('/signup', function () {
 Route::get('/product-detail', function () {
     return view('screens/product-detail');
 });
+
+Route::get('/admin', function () {
+    return view('screens/admin');
+});
