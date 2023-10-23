@@ -54,3 +54,7 @@ Route::get('/admin/dashboard', function () {
 Route::get('/admin/product', function () {
     return view('screens/product');
 });
+
+Route::get('/admin/transaction', function () {
+    return view('screens/transaction');
+});
