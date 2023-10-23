@@ -20,8 +20,9 @@
 
                 <div class="w-full bg-base-300 h-[0.1rem]"></div>
 
-                <ul class="menu mt-[-0.5rem] mb-[-2rem]">
-                    <li><a href="/order" class="font-semibold">My Orders</a></li>
+                <ul class="flex menu mt-[-0.5rem] mb-[-2rem]">
+                    <li><a href="/order" class="font-semibold">
+                            <img src="{{ asset('icon/order_icon.svg') }}" alt="">My Orders</a></li>
                 </ul>
             </div>
 
