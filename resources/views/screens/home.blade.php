@@ -120,10 +120,10 @@
         </div>
     </div>
 
-    <div class="flex mx-auto flex-col w-full justify-center items-center max-w-screen-2xl min-h-[calc(100vh-10rem)]">
+    <div class="flex mx-auto flex-col w-full justify-center items-center min-h-[calc(100vh-10rem)]">
         <h1 class="text-5xl text-center">Why Choose Us?</h1>
         <p class="text-lg text-center">Elevating Everyday Choices for a Greener Tomorrow</p>
-        <div class="carousel space-x-6 pt-10">
+        <div class="carousel items center justify-center w-full space-x-10 pt-10">
             <x-why-us-card :title="'Diverse Selection'" :image="'icon/why_us_1.svg'" :content="'Our commitment to sustainability goes hand-in-hand with our diverse product range. We offer an extensive selection of eco-friendly goods and services, making it easy for you to find everything you need in one place.'" />
             <x-why-us-card :title="'Quality Assurance'" :image="'icon/why_us_2.svg'" :content="'We prioritize quality and eco-consciousness. Every product and service we offer is carefully selected and scrutinized to ensure it meets our rigorous standards for sustainability, ethical production, and exceptional performance.'" />
             <x-why-us-card :title="'Sustainability at Heart'" :image="'icon/why_us_3.svg'" :content="'Sustainability isn\'t just a buzzword for us; it\'s our core principle. From our eco-conscious packaging to our responsible sourcing, we live and breathe sustainability, ensuring your choices align with your values.'" />
