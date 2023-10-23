@@ -1,6 +1,6 @@
 @props(['deliveryStatus' => 'Delivered'])
 
-<a href="#" class="w-full h-fit flex flex-row justify-between items-center p-4 border border-black bg-primary font-josefinsans hover:bg-primaryDark transition duration-400 cursor-pointer">
+<a href="#" class="w-full h-fit flex flex-row justify-between items-center p-4 border-b border-black bg-primary font-josefinsans hover:bg-primaryDark transition duration-400 cursor-pointer">
 
     <!-- Transaction Information -->
     <div class="w-full flex flex-col">
