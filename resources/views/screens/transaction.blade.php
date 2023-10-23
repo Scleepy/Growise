@@ -1,5 +1,6 @@
 @php
 $deliveryStatus = 'Delivering';
+$link = '/admin/transaction-detail';
 @endphp
 
 @extends('layout.main')
@@ -42,14 +43,14 @@ $deliveryStatus = 'Delivering';
 
     <!-- Transactions -->
     <div class="w-full h-full flex flex-col overflow-y-auto max-h-[75vh] no-scrollbar">
-        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" />
-        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" />
-        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" />
-        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" />
-        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" />
-        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" />
-        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" />
-        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" />
+        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" :link="$link" />
+        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" :link="$link" />
+        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" :link="$link" />
+        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" :link="$link" />
+        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" :link="$link" />
+        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" :link="$link" />
+        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" :link="$link" />
+        <x-admin-transaction-card :deliveryStatus="$deliveryStatus" :link="$link" />
     </div>
 </div>
 @endsection

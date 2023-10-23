@@ -58,3 +58,7 @@ Route::get('/admin/product', function () {
 Route::get('/admin/transaction', function () {
     return view('screens/transaction');
 });
+
+Route::get('/admin/transaction-detail', function () {
+    return view('screens/transaction-detail');
+});
