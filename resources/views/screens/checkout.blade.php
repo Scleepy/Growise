@@ -60,7 +60,7 @@
                 <p class="text-lg">Rp. 318.000</p>
             </div>
 
-            <button class="bg-secondary button btn-secondary p-2 mt-5">Continue Payment</button>
+            <button class="bg-secondary button btn-secondary p-2 mt-5 text-white">Continue Payment</button>
         </div>
     </div>
 @endsection

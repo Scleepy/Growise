@@ -27,7 +27,7 @@
                     <h1>Rp318,000</h1>
                 </div>
                 <div>
-                    <button class="btn btn-secondary font-normal normal-case text-sm rounded-none h-10 min-h-full w-full text-white">Checkout</button>
+                    <a href="/checkout" class="btn btn-secondary font-normal normal-case text-sm rounded-none h-10 min-h-full w-full text-white">Checkout</a>
                 </div>
             </div>
         </div>
