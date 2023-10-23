@@ -65,16 +65,18 @@
 
                             <div class="w-full">
                                 <p>Gender</p>
-                                <select id="gender" name="gender" class="p-2 bg-white border-slate-950 border-2 outline-none font-normal w-full">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                <select
+                                    class="focus:outline-none border-2 rounded-none bg-transparent border-black select select-sm h-[2.3rem] w-full">
+                                    <option disabled selected>Select Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
                                 </select>
                             </div>
 
                             <div class="w-full">
                                 <p>Phone Number</p>
                                 <input type="type" name="phone" placeholder="085280076262"
-                                    class="py-1 px-4 bg-white border-slate-950 border-2 outline-none font-normal w-full">
+                                    class="py-1 px-4 h-[2.3rem] bg-white border-slate-950 border-2 outline-none font-normal w-full">
                             </div>
                         </div>
 

@@ -40,7 +40,7 @@
         </div>
     </form>
 
-    <div class="flex gap-10 justify-center items-center">
+    <div class="flex gap-14 justify-center items-center">
         <a href="/cart"><img src="<?= asset('icon/bag_fill.svg') ?>" alt=""></a>
 
         <div class="dropdown dropdown-end dropdown-hover">
