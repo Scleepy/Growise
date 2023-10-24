@@ -62,3 +62,11 @@ Route::get('/admin/transaction', function () {
 Route::get('/admin/transaction-detail', function () {
     return view('screens/transaction-detail');
 });
+
+Route::get('/admin/new-product', function () {
+    return view('screens/newproduct');
+});
+
+Route::get('/admin/edit-product', function () {
+    return view('screens/editproduct');
+});
