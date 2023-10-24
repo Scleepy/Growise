@@ -6,9 +6,9 @@
 
     <!-- Buttons -->
     <div class="flex flex-col gap-4 my-4 font-josefinsans">
-        <a class="btn btn-secondary w-[325px] font-normal normal-case px-14 text-lg rounded-none">Products</a>
-        <a class="btn btn-secondary w-[325px] font-normal normal-case px-14 text-lg rounded-none">Transactions</a>
-        <a class="btn btn-secondary w-[325px] font-normal normal-case px-14 text-lg rounded-none">Logout</a>
+        <a href="/admin/product" class="btn btn-secondary w-[325px] font-normal normal-case px-14 text-lg rounded-none">Products</a>
+        <a href="/admin/transaction" class="btn btn-secondary w-[325px] font-normal normal-case px-14 text-lg rounded-none">Transactions</a>
+        <a href="/admin" class="btn btn-secondary w-[325px] font-normal normal-case px-14 text-lg rounded-none">Logout</a>
     </div>
 </div>
 @endsection

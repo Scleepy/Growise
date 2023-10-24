@@ -14,11 +14,9 @@
             <h3 class="text-lg">Rp. 24.750</h3>
         </div>
 
-        <!-- Add to Cart Button -->
-
         <!-- TODO: Change color scheme of hover -->
         <div class="flex flex-col items-end">
-            <a href="#" class="text-right hover:text-white">
+            <a href="/admin/edit-product" class="text-right hover:text-white">
                 Edit
             </a>
             <a href="#" class="text-right hover:text-white">
