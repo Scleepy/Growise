@@ -49,3 +49,27 @@ Route::get('/checkout', function () {
 Route::get('/admin', function () {
     return view('screens/admin');
 });
+
+Route::get('/admin/dashboard', function () {
+    return view('screens/dashboard');
+});
+
+Route::get('/admin/product', function () {
+    return view('screens/product');
+});
+
+Route::get('/admin/transaction', function () {
+    return view('screens/transaction');
+});
+
+Route::get('/admin/transaction-detail', function () {
+    return view('screens/transaction-detail');
+});
+
+Route::get('/admin/new-product', function () {
+    return view('screens/newproduct');
+});
+
+Route::get('/admin/edit-product', function () {
+    return view('screens/editproduct');
+});

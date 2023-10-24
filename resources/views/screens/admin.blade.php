@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-<div class="min-h-[75vh] px-24 py-10 flex flex-col items-centera justify-center">
+<div class="min-h-[75vh] px-24 py-10 flex flex-col items-center justify-center">
 
     <!-- Titles -->
     <div class="flex flex-col w-full h-fit items-center">
