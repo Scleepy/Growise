@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class TransactionDetails extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'Quantity',
+        'Subtotal'
+    ];
+
+    protected $guarded = [
+        'TransactionHeaderID',
+        'ProductID',
+        'PromoID'
+    ];
 }

@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'Rating',
+        'Comment',
+        'ReviewDate'
+    ];
+
+    protected $guarded = [
+        'UserID',
+        'ProductID'
+    ];
 }

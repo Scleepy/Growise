@@ -9,5 +9,11 @@ class OWOAccount extends Model
 {
     use HasFactory;
 
-    
+    protected $fillable = [
+        'Balance'
+    ];
+
+    protected $guarded = [
+        'UserID'
+    ];
 }

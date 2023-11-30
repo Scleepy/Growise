@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class ShipmentStatus extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'ShipmentDate'
+    ];
+
+    protected $guarded = [
+        'TransactionHeaderID',
+        'StatusID'
+    ];
 }
