@@ -15,6 +15,7 @@ class TransactionHeader extends Model
     ];
 
     protected $guarded = [
-        'UserID'
+        'UserID',
+        'ShipmentStatusID'
     ];
 }

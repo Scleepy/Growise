@@ -14,7 +14,6 @@ class ShipmentStatus extends Model
     ];
 
     protected $guarded = [
-        'TransactionHeaderID',
         'StatusID'
     ];
 }
