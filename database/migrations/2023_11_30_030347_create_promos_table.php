@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('promos', function (Blueprint $table) {
             $table->id();
+            $table->string('PromoName');
+            $table->decimal('DiscountPercentage');
+            $table->dateTime('ExpirationDate');
+            $table->boolean('IsActive')->default(true);
             $table->timestamps();
         });
     }

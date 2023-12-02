@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('o_w_o_accounts', function (Blueprint $table) {
             $table->id();
+            $table->decimal('Balance', 10, 2);
+
+            $table->unsignedBigInteger('UserID');
+            $table->foreign('UserID')->references('id')->on('users');
+
             $table->timestamps();
         });
     }

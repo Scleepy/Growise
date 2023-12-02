@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('transaction_headers', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('TransactionDate');
+            $table->decimal('TotalAmount', 10, 2);
             $table->timestamps();
+
+            $table->unsignedBigInteger('UserID');
+            $table->foreign('UserID')->references('id')->on('users');
+
+            $table->unsignedBigInteger('ShipmentStatusID');
+            $table->foreign('ShipmentStatusID')->references('id')->on('shipment_statuses');
         });
     }
 

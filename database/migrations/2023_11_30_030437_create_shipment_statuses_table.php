@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaction_details', function (Blueprint $table) {
+        Schema::create('shipment_statuses', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('ShipmentDate');
             $table->timestamps();
+
+            $table->unsignedBigInteger('StatusID');
+            $table->foreign('StatusID')->references('id')->on('statuses');
         });
     }
 
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaction_details');
+        Schema::dropIfExists('shipment_statuses');
     }
 };

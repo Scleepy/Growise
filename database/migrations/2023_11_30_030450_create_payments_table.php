@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('PaymentDate');
             $table->timestamps();
+
+            $table->unsignedBigInteger('UserID');
+            $table->foreign('UserID')->references('id')->on('users');
+
+            $table->unsignedBigInteger('TransactionHeaderID');
+            $table->foreign('TransactionHeaderID')->references('id')->on('transaction_headers');
         });
     }
 
