@@ -17,4 +17,14 @@ class Payment extends Model
         'UserID',
         'TransactionHeaderID'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'UserID');
+    }
+
+    public function transaction()
+    {
+        return $this->belongsTo(TransactionHeader::class, 'TransactionHeaderID');
+    }
 }

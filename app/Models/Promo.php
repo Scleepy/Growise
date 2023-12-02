@@ -15,4 +15,19 @@ class Promo extends Model
         'ExpirationDate',
         'IsActive'
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'PromoID');
+    }
+
+    public function transactionDetail()
+    {
+        return $this->belongsTo(TransactionDetails::class, 'PromoID');
+    }
+
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class, 'PromoID');
+    }
 }

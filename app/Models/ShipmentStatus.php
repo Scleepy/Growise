@@ -16,4 +16,14 @@ class ShipmentStatus extends Model
     protected $guarded = [
         'StatusID'
     ];
+
+    public function transaction()
+    {
+        return $this->belongsTo(TransactionHeader::class, 'ShipmentStatusID');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'StatusID');
+    }
 }

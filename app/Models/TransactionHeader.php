@@ -18,4 +18,24 @@ class TransactionHeader extends Model
         'UserID',
         'ShipmentStatusID'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'UserID');
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class, 'TransactionHeaderID');
+    }
+
+    public function transactionDetails()
+    {
+        return $this->hasMany(TransactionDetails::class, 'TransactionHeaderID');
+    }
+
+    public function shipmentStatus()
+    {
+        return $this->hasOne(ShipmentStatus::class, 'ShipmentStatusID');
+    }
 }

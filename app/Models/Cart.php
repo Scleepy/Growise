@@ -17,4 +17,19 @@ class Cart extends Model
         'UserID',
         'PromoID'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'UserID');
+    }
+
+    public function promo()
+    {
+        return $this->hasOne(Promo::class, 'PromoID');
+    }
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class, 'CartID');
+    }
 }

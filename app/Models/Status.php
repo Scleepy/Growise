@@ -12,4 +12,9 @@ class Status extends Model
     protected $fillable = [
         'StatusName'
     ];
+
+    public function shipmentStatus()
+    {
+        return $this->hasMany(ShipmentStatus::class, 'StatusID');
+    }
 }
