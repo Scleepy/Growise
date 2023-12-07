@@ -7,7 +7,7 @@
             <h2 class="leading-none text-2xl text-center">Signup</h2>
             <h1 class="leading-none text-6xl text-center -mt-4">Growise</h1>
         </div>
-        <form method="POST" action="/users" class="w-full h-5/6 flex flex-col items-center justify-between">
+        <form method="POST" action="{{ route('user.store')}}" class="w-full h-5/6 flex flex-col items-center justify-between">
             @csrf
             
             <div class="w-full">
@@ -35,9 +35,9 @@
             </div>
 
             <div class="w-full">
-                <input type="password" name="passwrd" placeholder="Password" class="focus:outline-none border-2 rounded-none border-black h-10 bg-transparent input input-bordered w-full" value="{{old('passwrd')}}"/>
+                <input type="password" name="pass" placeholder="Password" class="focus:outline-none border-2 rounded-none border-black h-10 bg-transparent input input-bordered w-full" value="{{old('pass')}}"/>
             
-                @error('passwrd')
+                @error('pass')
                 <p class="text-red-500">{{$message}}</p>
                 @enderror
             </div>
@@ -52,7 +52,7 @@
             
             <div class="w-full">
                <div class="w-full flex justify-between">
-                    <input type="date" name="birth-date" class="focus:outline-none border-2 rounded-none border-black bg-transparent input input-bordered w-[48%]" value="{{old('birth-date')}}"/>
+                    <input type="date" name="birthDate" class="focus:outline-none border-2 rounded-none border-black bg-transparent input input-bordered w-[48%]" value="{{old('birth-date')}}"/>
 
                     <select name="gender" class="focus:outline-none border-2 rounded-none  bg-transparent border-black select select-bordered w-[48%]">
                         <option disabled selected>Select Gender</option>
@@ -61,7 +61,7 @@
                     </select> 
                 </div>
                 
-                @error('birth-date')
+                @error('birthDate')
                     <span class="text-red-500">{{ $message }}</span>
                 @enderror
 
@@ -87,7 +87,7 @@
             </div>
             
             <div class="w-full pt-5">
-                <button class="focus:outline-none border-2 btn btn-secondary font-normal normal-case w-full text-neutral text-lg rounded-none">Sign Up</button>
+                <button type="submit" class="focus:outline-none border-2 btn btn-secondary font-normal normal-case w-full text-neutral text-lg rounded-none">Sign Up</button>
                 <p class="pt-3 text-center text-secondary text-sm">Already have an account? <a href="/login" class="font-bold">Log In</a></p>
             </div>
         </form>

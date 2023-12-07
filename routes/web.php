@@ -41,9 +41,9 @@ Route::get('/login', function () {
 //     return view('screens/signup');
 // });
 
-Route::get('/signup', [UserController::class, 'create']);
+Route::get('/signup', [UserController::class, 'create'])->name('user.create');
 
-Route::post('/users', [UserController::class, 'store']);
+Route::post('/users', [UserController::class, 'store'])->name('user.store');
 
 Route::get('/product-detail', function () {
     return view('screens/product-detail');

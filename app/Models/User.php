@@ -24,10 +24,10 @@ class User extends Authenticatable
         'Address',
         'PhoneNumber',
         'Gender',
-        'IsAdmin',
         'password',
     ];
 
+    protected $table = 'users';
     /**
      * The attributes that should be hidden for serialization.
      *
