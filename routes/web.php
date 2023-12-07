@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('screens/home');
@@ -34,9 +35,15 @@ Route::get('/login', function () {
     return view('screens/login');
 });
 
-Route::get('/signup', function () {
-    return view('screens/signup');
-});
+//Route::get('/login', [UserController::class, 'login']);
+
+// Route::get('/signup', function () {
+//     return view('screens/signup');
+// });
+
+Route::get('/signup', [UserController::class, 'create']);
+
+Route::post('/users', [UserController::class, 'store']);
 
 Route::get('/product-detail', function () {
     return view('screens/product-detail');
