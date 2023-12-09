@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -83,3 +84,5 @@ Route::get('/admin/transaction-detail', [AdminController::class, 'transactionDet
 Route::get('/admin/new-product', [AdminController::class, 'newProduct'])->name('admin.newProduct');
 
 Route::get('/admin/edit-product', [AdminController::class, 'editProduct'])->name('admin.editProduct');
+
+Route::post('/product/add', [ProductController::class, 'store'])->name('product.store');
