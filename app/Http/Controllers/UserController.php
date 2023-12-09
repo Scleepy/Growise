@@ -24,7 +24,7 @@ class UserController extends Controller
             'birthDate' => 'required|date|before_or_equal:today',
             'gender' => ['required', Rule::in(['Male', 'Female'])],
             'address' => 'required|string|max:255',
-            'owo-account' => 'required|string|size:12',
+            'owo-account' => ['required', 'string', 'size:12', Rule::exists('o_w_o_accounts', 'id'), Rule::unique('users', 'OWOAccountID')],
         ]);
 
         $userData = [

@@ -15,8 +15,21 @@ class OWOAccountSeeder extends Seeder
     {   
         //Generate random ID (12 digits)
         //str_pad(mt_rand(1, 999999999999), 12, '0', STR_PAD_LEFT)
+
+        DB::table('o_w_o_accounts')->insert([
+            'id' => "000000000000",
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
         DB::table('o_w_o_accounts')->insert([
             'id' => "085280076262",
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('o_w_o_accounts')->insert([
+            'id' => "081283762959",
             'created_at' => now(),
             'updated_at' => now(),
         ]);
