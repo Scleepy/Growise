@@ -22,8 +22,10 @@ return new class extends Migration
             $table->json('GalleryImages');
             $table->timestamps();
 
-            $table->unsignedBigInteger('PromoID');
-            $table->foreign('PromoID')->references('id')->on('promos');
+            $table->unsignedBigInteger('PromoID')->nullable();
+
+            $table->foreign('PromoID')->references('id')->on('promos')->onDelete('set null');
+
 
             $table->unsignedBigInteger('CategoryID');
             $table->foreign('CategoryID')->references('id')->on('categories');
