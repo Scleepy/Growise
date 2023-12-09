@@ -51,8 +51,6 @@ class ProductController extends Controller
             'CategoryID' => $category->id
         ];
 
-        dd($productData);
-
         $product = Product::create($productData);
 
         return redirect('/product-detail')->with('product', $product);

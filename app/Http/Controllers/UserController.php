@@ -32,6 +32,9 @@ class UserController extends Controller
             'gender' => ['required', Rule::in(['Male', 'Female'])],
             'address' => 'required|string|max:255',
             'owo-account' => ['required', 'string', 'size:12', Rule::exists('o_w_o_accounts', 'id'), Rule::unique('users', 'OWOAccountID')],
+        ], [
+            'pass.required' => 'The password field is required.',
+            'confirm-password.required' => 'The confirm password field must match password.',
         ]);
 
         $userData = [

@@ -72,6 +72,6 @@ class User extends Authenticatable
 
     public function OWOAccount()
     {
-        return $this->hasOne(OwoAccount::class, 'OWOAccountID', 'id');
+        return $this->belongsTo(OWOAccount::class, 'OWOAccountID', 'id');
     }
 }

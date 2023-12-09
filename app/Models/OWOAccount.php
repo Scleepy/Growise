@@ -15,6 +15,6 @@ class OWOAccount extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id', 'id');
+        return $this->hasOne(User::class, 'OWOAccountID', 'id');
     }
 }

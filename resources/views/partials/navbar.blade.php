@@ -52,7 +52,7 @@
                 <div class="flex gap-4">
                     <img src="{{ asset('icon/profile_icon.svg') }}" alt="" class="w-10 h-10">
                     <div class="flex flex-col justify-center">
-                        <p class="font-bold">Mario Surya</p>
+                        <p class="font-bold">{{auth()->user()->FullName}}</p>
                         <a href="/user" class="text-base-300 text-xs hover:text-opacity-60">View Profile</a>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                         <img src="{{ asset('icon/owo_icon.svg') }}" alt="" class="w-10 h-10">
                         
                         <div>
-                            <p class="font-bold">Rp1,150,000</p>
+                            <p class="font-bold">Rp{{ number_format(auth()->user()->OWOAccount->Balance, 0, ',', '.') }}</p>
                             <a href="/user" class="text-base-300 text-xs hover:text-opacity-60">Topup Balance</a>
                         </div>
                     </div>

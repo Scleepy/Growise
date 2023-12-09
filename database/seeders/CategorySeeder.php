@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Category;
 
 class CategorySeeder extends Seeder
 {
@@ -13,32 +14,20 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('categories')->insert([
-            'CategoryName' => 'Reusable Items'
-        ]);
+        $categories = [
+            'Reusable Items',
+            'Home Goods',
+            'Personal Care',
+            'Fashion',
+            'Energy Solutions',
+            'Up/Recycled Goods',
+            'Food',
+        ];
 
-        DB::table('categories')->insert([
-            'CategoryName' => 'Home Goods'
-        ]);
-
-        DB::table('categories')->insert([
-            'CategoryName' => 'Personal Care'
-        ]);
-
-        DB::table('categories')->insert([
-            'CategoryName' => 'Fashion'
-        ]);
-
-        DB::table('categories')->insert([
-            'CategoryName' => 'Energy Solutions'
-        ]);
-
-        DB::table('categories')->insert([
-            'CategoryName' => 'Up/Recycled Goods'
-        ]);
-
-        DB::table('categories')->insert([
-            'CategoryName' => 'Food'
-        ]);
+        foreach ($categories as $categoryName) {
+            Category::create([
+                'CategoryName' => $categoryName,
+            ]);
+        }
     }
 }

@@ -19,7 +19,8 @@ class Product extends Model
         'Price',
         'StockQuantity',
         'ProductImage',
-        'GalleryImages'
+        'GalleryImages',
+        'CategoryID'
     ];
 
     protected $guarded = [

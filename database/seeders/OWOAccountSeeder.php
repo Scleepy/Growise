@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\OWOAccount;
 
 class OWOAccountSeeder extends Seeder
 {
@@ -16,22 +17,17 @@ class OWOAccountSeeder extends Seeder
         //Generate random ID (12 digits)
         //str_pad(mt_rand(1, 999999999999), 12, '0', STR_PAD_LEFT)
 
-        DB::table('o_w_o_accounts')->insert([
+        OWOAccount::create([
             'id' => "000000000000",
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
 
-        DB::table('o_w_o_accounts')->insert([
+        OWOAccount::create([
             'id' => "085280076262",
-            'created_at' => now(),
-            'updated_at' => now(),
+            'Balance' => "1500000",
         ]);
 
-        DB::table('o_w_o_accounts')->insert([
+        OWOAccount::create([
             'id' => "081283762959",
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
     }
 }
