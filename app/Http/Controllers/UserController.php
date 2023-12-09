@@ -69,12 +69,16 @@ class UserController extends Controller
         $rememberMe = $request->has('rememberMe');
 
         if (auth()->attempt($userData, $rememberMe)) {
-            $request = session()->regenerate();
+            $request->session()->regenerate();
 
-            if (auth()->user()->IsAdmin) {
+            $user = auth()->user();
+
+            if ($user->IsAdmin) {
+                $request->session()->put('user', $user);
                 return redirect('/admin/dashboard');
             }
 
+            $request->session()->put('user', $user);
             return redirect('/');
         }
 
