@@ -12,9 +12,14 @@ class Product extends Model
     protected $fillable = [
         'ProductName',
         'Description',
+
+        // Impact towards environment
+        'ITE',
+
         'Price',
         'StockQuantity',
-        'ProductImage'
+        'ProductImage',
+        'GalleryImages'
     ];
 
     protected $guarded = [

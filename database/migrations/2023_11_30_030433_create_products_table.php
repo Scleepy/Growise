@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('ProductName');
             $table->string('Description');
+            $table->string('ITE');
             $table->decimal('Price', 10, 2);
             $table->integer('StockQuantity');
             $table->string('ProductImage');
+            $table->json('GalleryImages');
             $table->timestamps();
 
             $table->unsignedBigInteger('PromoID');
