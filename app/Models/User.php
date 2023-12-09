@@ -24,6 +24,7 @@ class User extends Authenticatable
         'Address',
         'PhoneNumber',
         'Gender',
+        'IsAdmin',
         'password',
         'OWOAccountID'
     ];

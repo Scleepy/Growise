@@ -9,15 +9,18 @@ use Illuminate\Validation\Rule;
 class UserController extends Controller
 {
 
-    public function create(){
+    public function create()
+    {
         return view('screens.user.signup');
     }
 
-    public function login(){
+    public function login()
+    {
         return view('screens.user.login');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $fields = $request->validate([
             'name' => 'required|string|max:255',
@@ -49,14 +52,15 @@ class UserController extends Controller
         return redirect('/')->with('message');
     }
 
-    public function authenticate(Request $request){
+    public function authenticate(Request $request)
+    {
         $fields = $request->validate([
             'email' => ['required', 'email'],
             'pass' => ['required']
         ], [
             'pass.required' => 'The password field is required.',
         ]);
-        
+
         $userData = [
             'email' => $fields['email'],
             'password' => $fields['pass'],
@@ -64,10 +68,10 @@ class UserController extends Controller
 
         $rememberMe = $request->has('rememberMe');
 
-        if(auth()->attempt($userData, $rememberMe)){
+        if (auth()->attempt($userData, $rememberMe)) {
             $request = session()->regenerate();
 
-            if(auth()->user()->isAdmin){
+            if (auth()->user()->IsAdmin) {
                 return redirect('/admin/dashboard');
             }
 
@@ -77,7 +81,8 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         auth()->logout();
 
         $request->session()->invalidate();
