@@ -74,7 +74,11 @@
 
                 <div class="mt-[-0.5rem]">
                     <li><a href="/order" class="font-semibold">My Orders</a></li>
-                    <li><a href="/logout" class="text-red-500 font-semibold hover:text-red-500">Logout</a></li>
+
+                    <form id="logoutForm" method="POST" action="/logout">
+                        @csrf
+                        <li><a href="#" onclick="logoutForm.submit();" class="text-red-500 font-semibold hover:text-red-500">Logout</a></li>
+                    </form>
                 </div>
             </ul>
         </div>

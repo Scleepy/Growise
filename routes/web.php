@@ -37,6 +37,8 @@ Route::post('/users', [UserController::class, 'store']);
 
 Route::get('/login', [UserController::class, 'login']);
 
+Route::post('/logout', [UserController::class, 'logout']);
+
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 Route::get('/product-detail', function () {
