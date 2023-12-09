@@ -13,7 +13,7 @@ class OWOAccount extends Model
         'Balance'
     ];
 
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class, 'id', 'id');
     }
