@@ -64,7 +64,7 @@
     </div>
 
 
-    <div class="flex mx-auto w-full justify-center items-center max-w-screen-2xl min-h-screen">
+    <div id="about-us" class="flex mx-auto w-full justify-center items-center max-w-screen-2xl min-h-screen">
         <div class="flex w-8/12 justify-between">
             <div class="w-6/12">
                 <img src="{{ asset('image/home/farmer.png') }}" alt="Farmer" width="400" class="rounded-tl-[74px] relative z-10" />
@@ -120,7 +120,7 @@
         </div>
     </div>
 
-    <div class="flex mx-auto flex-col w-full justify-center items-center min-h-[calc(100vh-10rem)]">
+    <div id="contact-us" class="flex mx-auto flex-col w-full justify-center items-center min-h-[calc(100vh-10rem)]">
         <h1 class="text-5xl text-center">Why Choose Us?</h1>
         <p class="text-lg text-center">Elevating Everyday Choices for a Greener Tomorrow</p>
         <div class="carousel items center justify-center w-full space-x-10 pt-10">

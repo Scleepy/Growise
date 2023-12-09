@@ -26,10 +26,10 @@
                 </div>
 
                 <div>
-                    <a href="/contact">
+                    <a href="/contact-us">
                         <p>Contact us</p>
                     </a>
-                    <a href="/about">
+                    <a href="/about-us">
                         <p>About us</p>
                     </a>
                 </div>

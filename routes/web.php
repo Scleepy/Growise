@@ -4,10 +4,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('screens/home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('aboutUs');
+Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contactUs');
 
 Route::get('/user', function () {
     return view('screens/user');
@@ -15,14 +16,6 @@ Route::get('/user', function () {
 
 Route::get('/cart', function () {
     return view('screens/cart');
-});
-
-Route::get('/about', function () {
-    return view('screens/about');
-});
-
-Route::get('/contact', function () {
-    return view('screens/contact');
 });
 
 Route::get('/catalogue', function () {
@@ -33,15 +26,16 @@ Route::get('/order', function () {
     return view('screens/order');
 });
 
-Route::get('/signup', [UserController::class, 'create']);
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [UserController::class, 'logout']);
+    Route::post('/users', [UserController::class, 'store']);
+});
 
-Route::post('/users', [UserController::class, 'store']);
-
-Route::get('/login', [UserController::class, 'login']);
-
-Route::post('/logout', [UserController::class, 'logout']);
-
-Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+Route::middleware(['guest'])->group(function () {
+    Route::get('/signup', [UserController::class, 'create']);
+    Route::get('/login', [UserController::class, 'login']);
+    Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+});
 
 Route::get('/product-detail', function () {
     return view('screens/product-detail');
