@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class, 'UserID');
     }
+
+    public function OWOAccount()
+    {
+        return $this->hasOne(OwoAccount::class, 'OWOAccountID', 'id');
+    }
 }

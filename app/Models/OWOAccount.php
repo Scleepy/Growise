@@ -12,4 +12,9 @@ class OWOAccount extends Model
     protected $fillable = [
         'Balance'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id', 'id');
+    }
 }
