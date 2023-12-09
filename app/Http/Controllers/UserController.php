@@ -24,7 +24,7 @@ class UserController extends Controller
             'birthDate' => 'required|date|before_or_equal:today',
             'gender' => ['required', Rule::in(['Male', 'Female'])],
             'address' => 'required|string|max:255',
-            'owo-account' => 'required|string|min:8|max:15',
+            'owo-account' => 'required|string|size:12',
         ]);
 
         $userData = [
@@ -35,6 +35,7 @@ class UserController extends Controller
             'PhoneNumber' => $fields['phonenumber'],
             'Gender' => $fields['gender'],
             'password' => $fields['pass'],
+            'OWOAccountID' => $fields['owo-account'],
         ];
 
         $user = User::create($userData);

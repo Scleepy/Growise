@@ -25,6 +25,7 @@ class User extends Authenticatable
         'PhoneNumber',
         'Gender',
         'password',
+        'OWOAccountID'
     ];
 
     protected $table = 'users';

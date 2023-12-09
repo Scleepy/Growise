@@ -52,7 +52,7 @@
             
             <div class="w-full">
                <div class="w-full flex justify-between">
-                    <input type="date" name="birthDate" class="focus:outline-none border-2 rounded-none border-black bg-transparent input input-bordered w-[48%]" value="{{old('birth-date')}}"/>
+                    <input type="date" name="birthDate" class="focus:outline-none border-2 rounded-none border-black bg-transparent input input-bordered w-[48%]" value="{{old('birthDate')}}"/>
 
                     <select name="gender" class="focus:outline-none border-2 rounded-none  bg-transparent border-black select select-bordered w-[48%]">
                         <option disabled selected>Select Gender</option>

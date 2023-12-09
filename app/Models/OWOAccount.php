@@ -12,8 +12,4 @@ class OWOAccount extends Model
     protected $fillable = [
         'Balance'
     ];
-
-    protected $guarded = [
-        'UserID'
-    ];
 }

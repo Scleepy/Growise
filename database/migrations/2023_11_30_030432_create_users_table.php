@@ -22,6 +22,8 @@ return new class extends Migration
             $table->boolean('IsAdmin')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('OWOAccountID');
+            $table->foreign('OWOAccountID')->references('id')->on('o_w_o_accounts');
             $table->rememberToken();
             $table->timestamps();
         });
