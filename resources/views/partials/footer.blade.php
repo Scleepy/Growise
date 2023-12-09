@@ -56,7 +56,7 @@
                 <p>Subscribe to Get Exclusive Updates and Offers</p>
 
                 <div class="relative flex items-center gap-2">
-                    <input type="text" name="search_product" placeholder="Email Address"
+                    <input type="text" name="email" placeholder="Email Address"
                         class="rounded-md py-1 px-4 bg-white outline-none text-black">
                     <a href=""><img src="<?= asset('icon/send.svg') ?>" alt=""></a>
                 </div>

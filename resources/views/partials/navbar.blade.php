@@ -41,6 +41,7 @@
     </form>
 
     <div class="flex gap-14 justify-center items-center">
+        @auth
         <a href="/cart"><img src="<?= asset('icon/bag_fill.svg') ?>" alt=""></a>
 
         <div class="dropdown dropdown-end dropdown-hover">
@@ -77,5 +78,11 @@
                 </div>
             </ul>
         </div>
+        @else
+        <div class="w-full">
+            <a href="/signup" class="btn btn-outline btn-secondary font-normal btn-sm px-6 rounded-none normal-case">Sign Up</a>
+            <a href="/login" class="btn btn-secondary font-normal btn-sm px-6 rounded-none normal-case">Log In</a>
+        </div>
+        @endauth
     </div>
 </div>

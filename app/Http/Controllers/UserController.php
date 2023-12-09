@@ -10,7 +10,11 @@ class UserController extends Controller
 {
 
     public function create(){
-        return view('screens.users.signup');
+        return view('screens.user.signup');
+    }
+
+    public function login(){
+        return view('screens.user.login');
     }
 
     public function store(Request $request){
@@ -42,6 +46,30 @@ class UserController extends Controller
 
         auth()->login($user);
 
-        return redirect('/')->with('message', 'User created and logged in');
+        return redirect('/')->with('message');
+    }
+
+    public function authenticate(Request $request){
+        $fields = $request->validate([
+            'email' => ['required', 'email'],
+            'pass' => ['required']
+        ], [
+            'pass.required' => 'The password field is required.',
+        ]);
+        
+        $userData = [
+            'email' => $fields['email'],
+            'password' => $fields['pass'],
+        ];
+
+        $rememberMe = $request->has('rememberMe');
+
+        if(auth()->attempt($userData, $rememberMe)){
+            $request = session()->regenerate();
+
+            return redirect('/');
+        }
+
+        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
 }

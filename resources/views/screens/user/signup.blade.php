@@ -7,7 +7,7 @@
             <h2 class="leading-none text-2xl text-center">Signup</h2>
             <h1 class="leading-none text-6xl text-center -mt-4">Growise</h1>
         </div>
-        <form method="POST" action="{{ route('user.store')}}" class="w-full h-5/6 flex flex-col items-center justify-between">
+        <form method="POST" action="/users" class="w-full h-5/6 flex flex-col items-center justify-between">
             @csrf
             
             <div class="w-full">

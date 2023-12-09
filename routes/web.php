@@ -31,19 +31,13 @@ Route::get('/order', function () {
     return view('screens/order');
 });
 
-Route::get('/login', function () {
-    return view('screens/login');
-});
+Route::get('/signup', [UserController::class, 'create']);
 
-//Route::get('/login', [UserController::class, 'login']);
+Route::post('/users', [UserController::class, 'store']);
 
-// Route::get('/signup', function () {
-//     return view('screens/signup');
-// });
+Route::get('/login', [UserController::class, 'login']);
 
-Route::get('/signup', [UserController::class, 'create'])->name('user.create');
-
-Route::post('/users', [UserController::class, 'store'])->name('user.store');
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 Route::get('/product-detail', function () {
     return view('screens/product-detail');
