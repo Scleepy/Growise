@@ -6,10 +6,6 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function loginView()
-    {
-        return view('screens.admin.admin');
-    }
 
     public function home()
     {
