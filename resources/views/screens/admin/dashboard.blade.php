@@ -10,7 +10,7 @@
 
         <!-- Buttons -->
         <div class="flex flex-col gap-4 my-4 font-josefinsans">
-            <a href="/admin/product"
+            <a href="{{ route('admin.products') }}"
                 class="btn btn-secondary w-[325px] font-normal normal-case px-14 text-lg rounded-none">Products</a>
             <a href="/admin/transaction"
                 class="btn btn-secondary w-[325px] font-normal normal-case px-14 text-lg rounded-none">Transactions</a>

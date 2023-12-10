@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function adminProducts()
+    {
+        $products = Product::all();
+
+        return view('screens.admin.product', compact('products'));
+    }
+
     public function store(Request $request)
     {
 
@@ -63,6 +70,6 @@ class ProductController extends Controller
 
         $product = Product::create($productData);
 
-        return redirect('/product-detail')->with('product', $product);
+        return redirect('/admin/product');
     }
 }

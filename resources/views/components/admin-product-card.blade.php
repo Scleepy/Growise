@@ -8,15 +8,15 @@
 
         <!-- Information -->
         <div class="flex flex-col">
-            <h4 class="text-md">Personal Care</h4>
-            <h3 class="text-xl">Brin Toothbrush</h3>
-            <h3 class="line-through opacity-50">Rp. 55.000</h3>
-            <h3 class="text-lg">Rp. 24.750</h3>
+            <h4 class="text-md">{{ $product->category->CategoryName }}</h4>
+            <h3 class="text-xl">{{ $product->ProductName }}</h3>
+            <h3 class="line-through opacity-50">Rp. {{ number_format($product->OriginalPrice, 2) }}</h3>
+            <h3 class="text-lg">Rp. {{ number_format($product->Price, 2) }}</h3>
         </div>
 
         <!-- TODO: Change color scheme of hover -->
         <div class="flex flex-col items-end">
-            <a href="/admin/edit-product" class="text-right hover:text-white">
+            <a href="/admin/edit-product/{{ $product->id }}" class="text-right hover:text-white">
                 Edit
             </a>
             <a href="#" class="text-right hover:text-white">

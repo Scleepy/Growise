@@ -101,22 +101,11 @@
 
                 <!-- Product Cards -->
                 <div class="w-full grid grid-cols-4 gap-y-6">
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
-                    <x-admin-product-card />
+                    @forelse ($products as $product)
+                        <x-admin-product-card :product="$product" />
+                    @empty
+                        <p class="text-xl text-red-500">No products found.</p>
+                    @endforelse
                 </div>
             </div>
         </div>
