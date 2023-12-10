@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/signup', [UserController::class, 'create']);
-    Route::get('/login', [UserController::class, 'login']);
+    Route::get('/login', [UserController::class, 'login'])->name('login');
     Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 });
 
@@ -69,7 +69,7 @@ Route::get('/admin', [AdminController::class, 'loginView'])->name('admin.loginVi
 
 Route::get('/admin/dashboard', [AdminController::class, 'home'])->name('admin.home');
 
-Route::get('/admin/product', [AdminController::class, 'products'])->name('admin.products');
+Route::get('/admin/product', [ProductController::class, 'adminProducts'])->name('admin.products');
 
 Route::get('/admin/transaction', [AdminController::class, 'transactions'])->name('admin.transactions');
 
@@ -80,3 +80,5 @@ Route::get('/admin/new-product', [AdminController::class, 'newProduct'])->name('
 Route::get('/admin/edit-product', [AdminController::class, 'editProduct'])->name('admin.editProduct');
 
 Route::post('/product/add', [ProductController::class, 'store'])->name('product.store');
+
+Route::post('/product/edit', [ProductController::class, 'update'])->name('product.update');
