@@ -30,15 +30,25 @@ class ProductController extends Controller
             return redirect()->back()->withErrors(['category' => 'Invalid category selected']);
         }
 
-        $productImagePath = $request->file('productImage')->store('products', 'public');
+        $fileName = time()  . '-' . $request->name . '-' . $request->file('productImage')->getClientOriginalName();
 
-        // Store gallery images
+        $path = public_path('image/products');
+        !is_dir($path) &&
+            mkdir($path, 0777, true);
+        $request->productImage->move($path, $fileName);
+
+        // dd($request);
+
         $galleryImages = [];
         if ($request->hasFile('galleryImages')) {
             foreach ($request->file('galleryImages') as $galleryImage) {
-                $galleryImages[] = $galleryImage->store('products/gallery', 'public');
+                $galleryFileName = time() . '-' . $galleryImage->getClientOriginalName();
+                $galleryImage->move($path, $galleryFileName);
+                $galleryImages[] = $galleryFileName;
             }
         }
+
+        // dd($galleryImages);
 
         $productData = [
             'ProductName' => $fields['name'],
@@ -46,7 +56,7 @@ class ProductController extends Controller
             'ITE' => $fields['impact'],
             'Price' => $fields['price'],
             'StockQuantity' => $fields['stock'],
-            'ProductImage' => $productImagePath,
+            'ProductImage' => $fileName,
             'GalleryImages' => json_encode($galleryImages),
             'CategoryID' => $category->id
         ];

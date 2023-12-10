@@ -29,7 +29,7 @@
                 <div class="w-fit h-fit flex flex-col gap-2">
                     <label>Gallery Images</label>
                     {{-- <img src="{{ asset('image/toothbrush.png') }}" class="aspect-square w-1/2" /> --}}
-                    <input type="file" id="galleryImages" name="galleryImages"
+                    <input type="file" id="galleryImages" name="galleryImages[]" multiple
                         class="file-input file-input-bordered file-input-sm rounded-none" />
 
                     @error('galleryImages')
