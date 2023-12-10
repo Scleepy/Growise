@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -32,8 +33,10 @@ class AdminController extends Controller
         return view('screens.admin.newproduct');
     }
 
-    public function editProduct()
+    public function editProduct($id)
     {
-        return view('screens.admin.editproduct');
+        $product = Product::findOrFail($id);
+
+        return view('screens.admin.editproduct', compact('product'));
     }
 }

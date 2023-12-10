@@ -77,8 +77,8 @@ Route::get('/admin/transaction-detail', [AdminController::class, 'transactionDet
 
 Route::get('/admin/new-product', [AdminController::class, 'newProduct'])->name('admin.newProduct');
 
-Route::get('/admin/edit-product', [AdminController::class, 'editProduct'])->name('admin.editProduct');
+Route::get('/admin/edit-product/{id}', [AdminController::class, 'editProduct'])->name('admin.editProduct');
 
 Route::post('/product/add', [ProductController::class, 'store'])->name('product.store');
 
-Route::post('/product/edit', [ProductController::class, 'update'])->name('product.update');
+Route::post('/product/edit/{id}', [ProductController::class, 'update'])->name('product.update');

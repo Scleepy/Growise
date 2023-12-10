@@ -16,7 +16,7 @@
 
         <!-- TODO: Change color scheme of hover -->
         <div class="flex flex-col items-end">
-            <a href="" class="text-right hover:text-white">
+            <a href="{{ route('admin.editProduct', ['id' => $product->id]) }}" class="text-right hover:text-white">
                 Edit
             </a>
             <a href="#" class="text-right hover:text-white">
