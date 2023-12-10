@@ -100,7 +100,7 @@
                 </div>
 
                 <!-- Product Cards -->
-                <div class="w-full grid grid-cols-4 gap-y-6">
+                <div class="w-full flex flex-wrap gap-4">
                     @forelse ($products as $product)
                         <x-admin-product-card :product="$product" />
                     @empty

@@ -1,7 +1,7 @@
 <div class="w-[225px] aspect-[3/4] flex flex-col bg-[#EAE5D5] border border-black">
 
     <!-- Product Image -->
-    <img class="w-full h-1/2" src="{{ asset('image/products/' . $product->ProductImage) }}" alt="Product Image" />
+    <img class="w-full h-1/2 object-cover" src="{{ asset('image/products/' . $product->ProductImage) }}" alt="Product Image" />
 
     <!-- Product Information -->
     <div class="w-full h-fit flex flex-row justify-between items-end p-4">
@@ -19,9 +19,11 @@
             <a href="{{ route('admin.editProduct', ['id' => $product->id]) }}" class="text-right hover:text-white">
                 Edit
             </a>
-            <a href="#" class="text-right hover:text-white">
-                Remove
-            </a>
+            <form method="POST" action="{{ route('destroy', ['product' => $product->id]) }}">
+                @csrf
+                @method('DELETE')
+                <button class="text-right hover:text-white">Remove</button>
+            </form>
         </div>
     </div>
 </div>

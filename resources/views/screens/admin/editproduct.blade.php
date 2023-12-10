@@ -15,7 +15,7 @@
 
         <!-- New Product Form -->
         <form method="POST" action="{{ route('product.update', ['id' => $product->id]) }}"
-            class="flex flex-col items-center gap-6 w-full h-fit font-josefinsans">
+            class="flex flex-col items-center gap-6 w-full h-fit font-josefinsans" enctype="multipart/form-data">
             @csrf
 
             <!-- Image Upload -->
@@ -33,8 +33,8 @@
                 <div class="w-fit h-fit flex flex-col gap-2">
                     <label>Gallery Images</label>
                     {{-- <img src="{{ asset('image/toothbrush.png') }}" class="aspect-square w-1/2" /> --}}
-                    <input type="file" id="galleryImages" name="galleryImages"
-                        class="file-input file-input-bordered file-input-sm rounded-none" />
+                    <input type="file" id="galleryImages" name="galleryImages[]" multiple
+                    class="file-input file-input-bordered file-input-sm rounded-none" />
                 </div>
 
             </div>

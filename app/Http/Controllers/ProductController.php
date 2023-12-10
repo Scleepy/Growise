@@ -6,13 +6,14 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
     public function adminProducts()
     {
         $products = Product::all();
-
         return view('screens.admin.product', compact('products'));
     }
 
@@ -68,12 +69,14 @@ class ProductController extends Controller
         return redirect('/admin/product');
     }
 
+    public function edit(Product $product){
+        return view('screens.admin.editproduct', ['product' => $product]);
+    }
+
     public function update(Request $request, $id)
-    {
+    {            
         $product = Product::findOrFail($id);
-
-        // dd($product);
-
+        
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'price' => 'required|numeric',
@@ -85,58 +88,54 @@ class ProductController extends Controller
             'galleryImages.*' => 'image|mimes:jpeg,png,jpg',
         ]);
 
-        // dd($validator);
-
-        if ($validator->fails()) {
-            return redirect()
-                ->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        dd($product->ProductName);
-        // Update the product data
-        if ($request->hasFile('productImage')) {
-            // Handle the product image update
-            $fileName = time() . '-' . $request->name . '-' . $request->file('productImage')->getClientOriginalName();
-            $path = public_path('image/products');
-            !is_dir($path) && mkdir($path, 0777, true);
-            $request->productImage->move($path, $fileName);
-            $product->ProductImage = $fileName;
-        }
-
-        // Update other fields
-        $product->ProductName = $request->input('name');
-        $product->Description = $request->input('productDescription');
-        $product->ITE = $request->input('impact');
-        $product->Price = $request->input('price');
-        $product->StockQuantity = $request->input('stock');
-
-
-        // Update the category
         $category = Category::where('CategoryName', $request->input('category'))->first();
 
-        if (!$category) {
-            return redirect()->back()->withErrors(['category' => 'Invalid category selected']);
+        $fileName = $product->ProductImage;
+        
+        if ($request->hasFile('productImage')) {
+
+            $imageFile = 'image/products/'.$product->ProductImage;
+
+            if (File::exists($imageFile)) {
+                File::delete($imageFile);
+            }
+
+            $fileName = time()  . '-' . $request->name . '-' . $request->file('productImage')->getClientOriginalName();
+
+            $path = public_path('image/products');
+            !is_dir($path) &&
+                mkdir($path, 0777, true);
+            $request->productImage->move($path, $fileName);
         }
+        
+        $galleryImages = $product->GalleryImages;
 
-        $product->CategoryID = $category->id;
-
-        $product->save();
-
-        // Handle gallery images update if provided
         if ($request->hasFile('galleryImages')) {
             $galleryImages = [];
+            
             foreach ($request->file('galleryImages') as $galleryImage) {
                 $galleryFileName = time() . '-' . $galleryImage->getClientOriginalName();
                 $galleryImage->move($path, $galleryFileName);
                 $galleryImages[] = $galleryFileName;
             }
-
-            $product->GalleryImages = json_encode($galleryImages);
-            $product->save();
         }
 
+        $product->update([
+            'ProductName' => $request->input('name'),
+            'Description' => $request->input('productDescription'),
+            'ITE' => $request->input('impact'),
+            'Price' => $request->input('price'),
+            'StockQuantity' => $request->input('stock'),
+            'CategoryID' => $category->id,
+            'ProductImage' => $fileName,
+            'GalleryImages' => json_encode($galleryImages),
+        ]);
+
+        return redirect('/admin/product');
+    }
+
+    public function destroy(Product $product){
+        $product->delete();
         return redirect('/admin/product');
     }
 }
