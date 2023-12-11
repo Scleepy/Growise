@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('FirstName');
-            $table->string('LastName');
+            $table->string('FullName');
             $table->date('Dob');
             $table->string('Email')->unique();
             $table->string('Address');
@@ -23,6 +22,8 @@ return new class extends Migration
             $table->boolean('IsAdmin')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('OWOAccountID');
+            $table->foreign('OWOAccountID')->references('id')->on('o_w_o_accounts');
             $table->rememberToken();
             $table->timestamps();
         });

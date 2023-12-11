@@ -18,16 +18,18 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'FirstName',
-        'LastName',
+        'FullName',
         'Dob',
         'Email',
         'Address',
         'PhoneNumber',
         'Gender',
-        'IsAdmin'
+        'IsAdmin',
+        'password',
+        'OWOAccountID'
     ];
 
+    protected $table = 'users';
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -66,5 +68,10 @@ class User extends Authenticatable
     public function reviews()
     {
         return $this->hasMany(Review::class, 'UserID');
+    }
+
+    public function OWOAccount()
+    {
+        return $this->belongsTo(OWOAccount::class, 'OWOAccountID', 'id');
     }
 }

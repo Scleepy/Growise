@@ -13,7 +13,8 @@ class OWOAccount extends Model
         'Balance'
     ];
 
-    protected $guarded = [
-        'UserID'
-    ];
+    public function user()
+    {
+        return $this->hasOne(User::class, 'OWOAccountID', 'id');
+    }
 }

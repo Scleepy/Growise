@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Status;
 
 class StatusSeeder extends Seeder
 {
@@ -13,14 +14,16 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('statuses')->insert([
-            'StatusName' => 'Processing'
-        ]);
-        DB::table('statuses')->insert([
-            'StatusName' => 'Delivering'
-        ]);
-        DB::table('statuses')->insert([
-            'StatusName' => 'Delivered'
-        ]);
+        $statuses = [
+            'Processing',
+            'Delivering',
+            'Delivered',
+        ];
+
+        foreach ($statuses as $statusName) {
+            Status::create([
+                'StatusName' => $statusName,
+            ]);
+        }
     }
 }

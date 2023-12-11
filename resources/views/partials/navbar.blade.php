@@ -22,10 +22,10 @@
             </ul>
         </div>
         <li>
-            <a href="/contact">Contact Us</a>
+            <a href="/contact-us">Contact Us</a>
         </li>
         <li>
-            <a href="/about">About Us</a>
+            <a href="/about-us">About Us</a>
         </li>
     </ul>
 
@@ -41,6 +41,7 @@
     </form>
 
     <div class="flex gap-14 justify-center items-center">
+        @auth
         <a href="/cart"><img src="<?= asset('icon/bag_fill.svg') ?>" alt=""></a>
 
         <div class="dropdown dropdown-end dropdown-hover">
@@ -51,7 +52,7 @@
                 <div class="flex gap-4">
                     <img src="{{ asset('icon/profile_icon.svg') }}" alt="" class="w-10 h-10">
                     <div class="flex flex-col justify-center">
-                        <p class="font-bold">Mario Surya</p>
+                        <p class="font-bold">{{auth()->user()->FullName}}</p>
                         <a href="/user" class="text-base-300 text-xs hover:text-opacity-60">View Profile</a>
                     </div>
                 </div>
@@ -63,7 +64,7 @@
                         <img src="{{ asset('icon/owo_icon.svg') }}" alt="" class="w-10 h-10">
                         
                         <div>
-                            <p class="font-bold">Rp1,150,000</p>
+                            <p class="font-bold">Rp{{ number_format(auth()->user()->OWOAccount->Balance, 0, ',', '.') }}</p>
                             <a href="/user" class="text-base-300 text-xs hover:text-opacity-60">Topup Balance</a>
                         </div>
                     </div>
@@ -73,9 +74,19 @@
 
                 <div class="mt-[-0.5rem]">
                     <li><a href="/order" class="font-semibold">My Orders</a></li>
-                    <li><a href="/logout" class="text-red-500 font-semibold hover:text-red-500">Logout</a></li>
+
+                    <form id="logoutForm" method="POST" action="/logout">
+                        @csrf
+                        <li><a href="#" onclick="logoutForm.submit();" class="text-red-500 font-semibold hover:text-red-500">Logout</a></li>
+                    </form>
                 </div>
             </ul>
         </div>
+        @else
+        <div class="w-full">
+            <a href="/signup" class="btn btn-outline btn-secondary font-normal btn-sm px-6 rounded-none normal-case">Sign Up</a>
+            <a href="/login" class="btn btn-secondary font-normal btn-sm px-6 rounded-none normal-case">Log In</a>
+        </div>
+        @endauth
     </div>
 </div>

@@ -15,13 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('ProductName');
             $table->string('Description');
+            $table->string('ITE');
             $table->decimal('Price', 10, 2);
             $table->integer('StockQuantity');
             $table->string('ProductImage');
+            $table->json('GalleryImages');
             $table->timestamps();
 
-            $table->unsignedBigInteger('PromoID');
-            $table->foreign('PromoID')->references('id')->on('promos');
+            $table->unsignedBigInteger('PromoID')->nullable();
+
+            $table->foreign('PromoID')->references('id')->on('promos')->onDelete('set null');
+
 
             $table->unsignedBigInteger('CategoryID');
             $table->foreign('CategoryID')->references('id')->on('categories');
