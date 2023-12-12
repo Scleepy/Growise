@@ -28,13 +28,13 @@ Route::get('/order', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [UserController::class, 'logout']);
-    Route::post('/users', [UserController::class, 'store']);
 });
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/signup', [UserController::class, 'create']);
     Route::get('/login', [UserController::class, 'login'])->name('login');
     Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+    Route::post('/users', [UserController::class, 'store']);
 });
 
 Route::get('/product-detail', function () {
