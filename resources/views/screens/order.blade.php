@@ -15,7 +15,7 @@
                 <div class="flex gap-4">
                     <img src="{{ asset('icon/profile_icon.svg') }}" alt="" class="w-10 h-10">
                     <div class="flex flex-col justify-center">
-                        <p class="font-bold">Mario Surya</p>
+                        <p class="font-bold">{{ $user->FullName }}</p>
                         <a href="/user" class="text-base-300 text-xs hover:text-opacity-60">View Profile</a>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                 <div class="w-full bg-base-300 h-[0.1rem]"></div>
 
                 <ul class="flex menu mt-[-0.5rem] mb-[-2rem]">
-                    <li><a href="/order" class="font-semibold">
+                    <li><a href="{{ route('userGetHistoryTransaction') }}" class="font-semibold">
                             <img src="{{ asset('icon/order_icon.svg') }}" alt="">My Orders</a></li>
                 </ul>
             </div>
@@ -74,108 +74,53 @@
                 </div>
 
                 <div class="flex flex-col gap-6 mt-8">
-                    <div class="flex justify-around items-center">
-                        <img src="{{ asset('image/toothbrush.png') }}" alt="" class="w-28 h-28">
+                    @foreach ($th as $item)
+                        <div class="flex justify-between items-center w-full gap-10">
+                            <div class="flex flex-col justify-center items-start">
+                                <h1 class="text-xl">Transaction Header</h1>
 
-                        <div class="flex flex-col gap-1">
-                            <div class="flex gap-6 font-normal">
-                                <div class="flex justify-center items-center gap-2">
+                                <p class="text-base-300 font-normal">OWO/0{{ $user->OWOAccount->id }}</p>
+
+                                <div class="flex gap-2 justify-center items-center">
                                     <img src="{{ asset('icon/date_icon.svg') }}" alt="">
-                                    <p>22/10/2023</p>
+                                    <p class="font-normal text-base mt-1">{{ $item->TransactionDate }}</p>
                                 </div>
-
-                                <p class="text-base-300">OWO/4668510203330</p>
                             </div>
 
-                            <h1 class="font-normal text-xl">Brin Toothbrush</h1>
-                            <p class="text-green-800 text-xs">1 x Rp.24.750</p>
-
-                            <h1>Total: <span class="text-green-800">Rp.24.750</span></h1>
-                        </div>
-
-                        <div class="w-44 bg-secondary p-2 justify-center items-center text-center">
-                            <h1 class="text-white">Processing</h1>
-                        </div>
-
-                        <button class="text-secondary button">
-                            View Transaction Detail
-                        </button>
-                    </div>
-
-                    <div class="bg-base-300 h-[0.1rem] w-full"></div>
-
-                    <div class="flex justify-around items-center">
-                        <img src="{{ asset('image/toothbrush.png') }}" alt="" class="w-28 h-28">
-
-                        <div class="flex flex-col gap-1">
-                            <div class="flex gap-6 font-normal">
-                                <div class="flex justify-center items-center gap-2">
-                                    <img src="{{ asset('icon/date_icon.svg') }}" alt="">
-                                    <p>22/10/2023</p>
-                                </div>
-
-                                <p class="text-base-300">OWO/4668510203330</p>
+                            <div class="w-44 bg-secondary p-2 justify-center items-center text-center">
+                                <h1 class="text-white">{{ $item->shipmentStatus->status->StatusName }}</h1>
                             </div>
-
-                            <h1 class="font-normal text-xl">Brin Toothbrush</h1>
-                            <p class="text-green-800 text-xs">1 x Rp.24.750</p>
-
-                            <h1>Total: <span class="text-green-800">Rp.24.750</span></h1>
                         </div>
 
-                        <div class="w-44 bg-secondary p-2 justify-center items-center text-center">
-                            <h1 class="text-white">Fullfilled</h1>
-                        </div>
+                        <div class="p-6 border-2 border-base-300 shadow-lg">
+                            @foreach ($td[$item->id] as $tdItem)
+                                <div class="flex flex-col gap-6">
+                                    <div class="flex">
+                                        <img src="{{ asset($tdItem->product->ProductImage) }}"
+                                            alt="{{ $tdItem->product->ProductName }}" class="w-24 h-24 object-cover">
+                                        <div class="pl-4 flex flex-col gap-2 justify-center">
+                                            <h1 class="leading-none text-lg">{{ $tdItem->product->ProductName }}
+                                            </h1>
+                                            <p class="leading-none text-sm">{{ $tdItem->Quantity }} x Rp.
+                                                {{ number_format($tdItem->product->Price) }}</p>
+                                            <h1 class="text-secondary">Rp. {{ number_format($tdItem->Subtotal) }}
+                                            </h1>
+                                        </div>
+                                    </div>
 
-                        <button class="text-secondary button">
-                            View Transaction Detail
-                        </button>
-                    </div>
-
-                    <div class="bg-base-300 h-[0.1rem] w-full"></div>
-
-                    <div class="flex justify-around items-center">
-                        <img src="{{ asset('image/toothbrush.png') }}" alt="" class="w-28 h-28">
-
-                        <div class="flex flex-col gap-1">
-                            <div class="flex gap-6 font-normal">
-                                <div class="flex justify-center items-center gap-2">
-                                    <img src="{{ asset('icon/date_icon.svg') }}" alt="">
-                                    <p>22/10/2023</p>
+                                    <div></div>
                                 </div>
+                            @endforeach
 
-                                <p class="text-base-300">OWO/4668510203330</p>
+                            <div>
+                                <p class="text-xl">Total Price</p>
+                                <h1 class="text-secondary text-xl">Rp. {{ number_format($item->TotalAmount) }}
+                                </h1>
                             </div>
-
-                            <h1 class="font-normal text-xl">Brin Toothbrush</h1>
-                            <p class="text-green-800 text-xs">1 x Rp.24.750</p>
-
-                            <h1>Total: <span class="text-green-800">Rp.24.750</span></h1>
                         </div>
 
-                        <div class="w-44 bg-secondary p-2 justify-center items-center text-center">
-                            <h1 class="text-white">Shipped</h1>
-                        </div>
-
-                        <button class="text-secondary button">
-                            View Transaction Detail
-                        </button>
-                    </div>
-                </div>
-                
-
-                <div class="flex flex-row w-full justify-center mb-16 gap-2">
-                    <div class="w-8 aspect-square rounded-full bg-secondary flex flex-row justify-center items-center group cursor-pointer">
-                        <h3 class="text-white">1</h3>
-                    </div>
-            
-                    <div class="w-8 aspect-square rounded-full bg-primaryDark flex flex-row justify-center items-center group hover:bg-secondary cursor-pointer">
-                        <h3 class="text-black group-hover:text-white">2</h3>
-                    </div>
-            
-                    <div class="w-8 aspect-square rounded-full bg-primaryDark flex flex-row justify-center items-center group hover:bg-secondary cursor-pointer">
-                        <img src="<?= asset('icon/Expand_right.svg') ?>" />
-                    </div>
+                        <div class="bg-base-300 h-[0.1rem] w-full"></div>
+                    @endforeach
                 </div>
             </div>
         </div>

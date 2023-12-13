@@ -12,7 +12,9 @@ class CartItem extends Model
     protected $fillable = [
         'Quantity',
         'ItemNotes',
-        'Subtotal'
+        'Subtotal',
+        'CartID',
+        'ProductID'
     ];
 
     protected $guarded = [
@@ -20,7 +22,7 @@ class CartItem extends Model
         'ProductID'
     ];
 
-    public function products()
+    public function product()
     {
         return $this->belongsTo(Product::class, 'ProductID');
     }

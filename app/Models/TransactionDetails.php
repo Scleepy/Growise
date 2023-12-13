@@ -11,7 +11,9 @@ class TransactionDetails extends Model
 
     protected $fillable = [
         'Quantity',
-        'Subtotal'
+        'Subtotal',
+        'TransactionHeaderID',
+        'ProductID',
     ];
 
     protected $guarded = [
@@ -22,7 +24,7 @@ class TransactionDetails extends Model
 
     public function product()
     {
-        return $this->hasOne(Product::class, 'ProductID');
+        return $this->belongsTo(Product::class, 'ProductID', 'id');
     }
 
     public function promo()

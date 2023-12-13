@@ -15,18 +15,40 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            'Reusable Items',
-            'Home Goods',
-            'Personal Care',
-            'Fashion',
-            'Energy Solutions',
-            'Up/Recycled Goods',
-            'Food',
+            [
+                'CategoryName' => 'Reusable Items',
+                'Slug' => 'reusable-items'
+            ],
+            [
+                'CategoryName' => 'Home Goods',
+                'Slug' => 'home-goods'
+            ],
+            [
+                'CategoryName' => 'Personal Care',
+                'Slug' => 'personal-care'
+            ],
+            [
+                'CategoryName' => 'Fashion',
+                'Slug' => 'fashion'
+            ],
+            [
+                'CategoryName' => 'Energy Solutions',
+                'Slug' => 'energy-solutions'
+            ],
+            [
+                'CategoryName' => 'Up/Recycled Goods',
+                'Slug' => 'up-recycled-goods'
+            ],
+            [
+                'CategoryName' => 'Food',
+                'Slug' => 'food'
+            ]
         ];
 
-        foreach ($categories as $categoryName) {
+        foreach ($categories as $category) {
             Category::create([
-                'CategoryName' => $categoryName,
+                'CategoryName' => $category['CategoryName'],
+                'Slug' => $category['Slug']
             ]);
         }
     }

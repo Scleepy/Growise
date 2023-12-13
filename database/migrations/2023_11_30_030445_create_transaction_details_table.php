@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('ProductID');
             $table->foreign('ProductID')->references('id')->on('products');
 
-            $table->unsignedBigInteger('PromoID');
+            $table->unsignedBigInteger('PromoID')->nullable();
             $table->foreign('PromoID')->references('id')->on('promos');
         });
     }

@@ -10,7 +10,8 @@ class ShipmentStatus extends Model
     use HasFactory;
 
     protected $fillable = [
-        'ShipmentDate'
+        'ShipmentDate',
+        'StatusID'
     ];
 
     protected $guarded = [
@@ -19,11 +20,11 @@ class ShipmentStatus extends Model
 
     public function transaction()
     {
-        return $this->belongsTo(TransactionHeader::class, 'ShipmentStatusID');
+        return $this->belongsTo(TransactionHeader::class, 'ShipmentStatusID', 'id');
     }
 
     public function status()
     {
-        return $this->belongsTo(Status::class, 'StatusID');
+        return $this->belongsTo(Status::class, 'StatusID', 'id');
     }
 }

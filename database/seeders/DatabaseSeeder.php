@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             OWOAccountSeeder::class,
             UserSeeder::class,
+            ProductSeeder::class,
         ]);
     }
 }
