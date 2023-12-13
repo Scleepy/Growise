@@ -13,6 +13,16 @@ class AdminController extends Controller
         return view('screens.admin.dashboard');
     }
 
+    public function logout(Request $request)
+    {
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
     public function products()
     {
         return view('screens.admin.product');

@@ -1,31 +1,20 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 
+// USER ROUTE
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('aboutUs');
 Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contactUs');
 
-Route::get('/user', function () {
-    return view('screens/user');
-});
-
-Route::get('/cart', function () {
-    return view('screens/cart');
-});
-
-Route::get('/catalogue', function () {
-    return view('screens/catalogue');
-});
-
-Route::get('/order', function () {
-    return view('screens/order');
-});
-
+// user login + register
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [UserController::class, 'logout']);
 });
@@ -37,39 +26,37 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/users', [UserController::class, 'store']);
 });
 
-Route::get('/product-detail', function () {
-    return view('screens/product-detail');
+Route::get('/user', function () {
+    return view('screens/user');
 });
 
-Route::get('/checkout', function () {
-    return view('screens/checkout');
-});
+// catalogue
+Route::get('/catalogue', [ProductController::class, 'getAllProducts'])->name('products');
+Route::get('/catalogue/{slug}', [ProductController::class, 'getAllProductsBySlug'])->name('getProductsBySlug');
+Route::get('/catalogue/{categorySlug}/{productSlug}', [ProductController::class, 'productDetails'])->name('productDetails');
 
-// Route::get('/admin', function () {
-//     return view('screens/admin');
-// });
+// history transaction
+Route::get('/order', [UserController::class, 'getHistoryTransaction'])->name("userGetHistoryTransaction");
 
-// Route::get('/admin/dashboard', function () {
-//     return view('screens/dashboard');
-// });
+// cart and payment
+Route::post('/cart', [CartItemController::class, 'addToCartOrUpdateQuantity'])->name('addToCartOrUpdateQuantity');
+Route::post('/cart/buy-now', [CartController::class, 'buyNow'])->name('buyNow');
 
-// Route::get('/admin/product', function () {
-//     return view('screens/product');
-// });
+Route::get('/cart', [CartItemController::class, 'getItemsByCartId'])->name('cart');
+Route::delete('/cart/{cartItem}', [CartItemController::class, 'destroy'])->name('cartItemDestroy');
 
-// Route::get('/admin/transaction', function () {
-//     return view('screens/transaction');
-// });
+Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::post('/checkout/payment', [CartController::class, 'payment'])->name('payment');
 
-// Route::get('/admin/transaction-detail', function () {
-//     return view('screens/transaction-detail');
-// });
+// ADMIN ROUTE
 
 Route::get('/admin', [AdminController::class, 'loginView'])->name('admin.loginView');
 
+Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
 Route::get('/admin/dashboard', [AdminController::class, 'home'])->name('admin.home');
 
-Route::get('/admin/product', [ProductController::class, 'adminProducts'])->name('admin.products');
+Route::get('/admin/product', [ProductController::class, 'getAllProducts'])->name('admin.products');
 
 Route::get('/admin/transaction', [AdminController::class, 'transactions'])->name('admin.transactions');
 

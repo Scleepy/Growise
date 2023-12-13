@@ -5,16 +5,38 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
-    public function adminProducts()
+    public function getAllProducts()
     {
         $products = Product::all();
-        return view('screens.admin.product', compact('products'));
+
+        if (Auth::check() && Auth::user()->IsAdmin) {
+            return view('screens.admin.product', compact('products'));
+        } else {
+            return view('screens.catalogue', ['products' => $products]);
+        }
+    }
+
+    public function getAllProductsBySlug($slug)
+    {
+        $category = Category::where('Slug', $slug)->first();
+        $products = Product::where('CategoryID', $category->id)->get();
+
+        return view('screens.catalogue', ['products' => $products]);
+    }
+
+    public function productDetails($categorySlug, $productSlug)
+    {
+        $category = Category::where('Slug', $categorySlug)->first();
+        $product = Product::where('CategoryID', $category->id)->where('Slug', $productSlug)->first();
+
+        return view('screens.product-detail', ['product' => $product]);
     }
 
     public function store(Request $request)
@@ -53,8 +75,11 @@ class ProductController extends Controller
             }
         }
 
+        $slug = $this->generateSlug($fields['name']);
+
         $productData = [
             'ProductName' => $fields['name'],
+            'Slug' => $slug,
             'Description' => $fields['productDescription'],
             'ITE' => $fields['impact'],
             'Price' => $fields['price'],
@@ -69,14 +94,25 @@ class ProductController extends Controller
         return redirect('/admin/product');
     }
 
-    public function edit(Product $product){
+    private function generateSlug($string) {
+        $string = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
+        $string = preg_replace('/[^a-zA-Z0-9]/', ' ', $string);
+        
+        $string = strtolower($string);
+        $string = trim(preg_replace('/\s+/', '-', $string), '-');
+        
+        return $string;
+    }
+
+    public function edit(Product $product)
+    {
         return view('screens.admin.editproduct', ['product' => $product]);
     }
 
     public function update(Request $request, $id)
-    {            
+    {
         $product = Product::findOrFail($id);
-        
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'price' => 'required|numeric',
@@ -91,10 +127,10 @@ class ProductController extends Controller
         $category = Category::where('CategoryName', $request->input('category'))->first();
 
         $fileName = $product->ProductImage;
-        
+
         if ($request->hasFile('productImage')) {
 
-            $imageFile = 'image/products/'.$product->ProductImage;
+            $imageFile = 'image/products/' . $product->ProductImage;
 
             if (File::exists($imageFile)) {
                 File::delete($imageFile);
@@ -107,12 +143,12 @@ class ProductController extends Controller
                 mkdir($path, 0777, true);
             $request->productImage->move($path, $fileName);
         }
-        
+
         $galleryImages = $product->GalleryImages;
 
         if ($request->hasFile('galleryImages')) {
             $galleryImages = [];
-            
+
             foreach ($request->file('galleryImages') as $galleryImage) {
                 $galleryFileName = time() . '-' . $galleryImage->getClientOriginalName();
                 $galleryImage->move($path, $galleryFileName);
@@ -134,7 +170,8 @@ class ProductController extends Controller
         return redirect('/admin/product');
     }
 
-    public function destroy(Product $product){
+    public function destroy(Product $product)
+    {
         $product->delete();
         return redirect('/admin/product');
     }

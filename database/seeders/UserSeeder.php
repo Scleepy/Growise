@@ -25,5 +25,17 @@ class UserSeeder extends Seeder
             'Password' => '$2y$10$izN.0SxE8i9LETM8K9g0xePe494SBLZlZQ70YayGTh8l68GC2WgmW', //daniel12345
             'OWOAccountID' => '085280076262',
         ]);
+
+        User::create([
+            'FullName' => '測試',
+            'Dob' => '2023-12-08',
+            'Email' => 'kenneth@gmail.com',
+            'Address' => 'binus university',
+            'PhoneNumber' => '081254698756',
+            'Gender' => 'Male',
+            'IsAdmin' => false,
+            'Password' => '$2y$10$WIpSni7UpgR0BWSKJ5FS5.m2KtjSEJs3uGgh.kRuqtoqR9nqfC5L6', //testing123
+            'OWOAccountID' => '081254698756',
+        ]);
     }
 }

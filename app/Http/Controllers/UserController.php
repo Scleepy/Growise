@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ShipmentStatus;
+use App\Models\TransactionDetails;
+use App\Models\TransactionHeader;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -96,5 +99,19 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function getHistoryTransaction()
+    {
+        $user = auth()->user();
+        $th = TransactionHeader::where('UserID', $user->id)->get();
+        $tdAll = [];
+
+        foreach ($th as $item) {
+            $td = TransactionDetails::where('TransactionHeaderID', $item->id)->get();
+            $tdAll[$item->id] = $td;
+        }
+
+        return view('screens.order', ['user' => $user, 'th' => $th, 'td' => $tdAll]);
     }
 }

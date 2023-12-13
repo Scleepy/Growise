@@ -29,5 +29,10 @@ class OWOAccountSeeder extends Seeder
         OWOAccount::create([
             'id' => "081283762959",
         ]);
+
+        OWOAccount::create([
+            'id' => "081254698756",
+            'Balance' => "2000000",
+        ]);
     }
 }

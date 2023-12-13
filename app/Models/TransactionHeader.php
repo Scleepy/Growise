@@ -11,7 +11,9 @@ class TransactionHeader extends Model
 
     protected $fillable = [
         'TransactionDate',
-        'TotalAmount'
+        'TotalAmount',
+        'UserID',
+        'ShipmentStatusID'
     ];
 
     protected $guarded = [
@@ -36,6 +38,6 @@ class TransactionHeader extends Model
 
     public function shipmentStatus()
     {
-        return $this->hasOne(ShipmentStatus::class, 'ShipmentStatusID');
+        return $this->hasOne(ShipmentStatus::class, 'id', 'ShipmentStatusID');
     }
 }

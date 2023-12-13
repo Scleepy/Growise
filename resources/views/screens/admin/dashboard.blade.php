@@ -14,7 +14,7 @@
                 class="btn btn-secondary w-[325px] font-normal normal-case px-14 text-lg rounded-none">Products</a>
             <a href="/admin/transaction"
                 class="btn btn-secondary w-[325px] font-normal normal-case px-14 text-lg rounded-none">Transactions</a>
-            <a href="/admin"
+            <a href="/admin/logout"
                 class="btn btn-secondary w-[325px] font-normal normal-case px-14 text-lg rounded-none">Logout</a>
         </div>
     </div>
