@@ -11,9 +11,11 @@ class AdminTransactionCard extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $transaction;
+
+    public function __construct($transaction)
     {
-        //
+        $this->transaction = $transaction;
     }
 
     /**

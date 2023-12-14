@@ -30,7 +30,11 @@ class AdminController extends Controller
 
     public function transactions()
     {
-        return view('screens.admin.transaction');
+        $thc = new TransactionHeaderController();
+
+        $transactions = $thc->getAllTransactions();
+
+        return view('screens.admin.transaction', compact('transactions'));
     }
 
     public function transactionDetails()

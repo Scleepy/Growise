@@ -30,4 +30,19 @@ class TransactionHeaderController extends Controller
 
         return $th;
     }
+
+    public function getAllTransactions()
+    {
+
+        $transactions = TransactionHeader::all();
+
+        return $transactions;
+    }
+
+    public function getTransactionTotal($transaction)
+    {
+        $total = $transaction->transactionDetails->sum('Subtotal');
+
+        return $total;
+    }
 }
