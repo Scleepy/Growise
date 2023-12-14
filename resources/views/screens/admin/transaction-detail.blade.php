@@ -3,13 +3,19 @@
     $name = $transactionHeader->user->FullName;
     $address = $transactionHeader->user->Address;
 
-    // Convert the string to a Carbon instance
     $transactionDate = \Carbon\Carbon::parse($transactionHeader->TransactionDate);
 
     $date = $transactionDate->format('F d, Y');
     $time = $transactionDate->format('H:i');
     $deliveryStatus = $transactionHeader->shipmentStatus->status->StatusName;
     $total = app('App\Http\Controllers\TransactionHeaderController')->getTransactionTotal($transactionHeader);
+
+    $buttonText = '';
+    if ($deliveryStatus === 'Processing') {
+        $buttonText = 'Change to Delivering';
+    } elseif ($deliveryStatus === 'Delivering') {
+        $buttonText = 'Change to Delivered';
+    }
 @endphp
 
 @extends('layout.main')
@@ -69,10 +75,10 @@
                                 <h3>Delivery Status</h3>
                                 <h3
                                     class="
-                            @if ($transactionHeader->shipmentStatus->status->StatusName === 'Under Process') text-red-600
-                            @elseif($transactionHeader->shipmentStatus->status->StatusName === 'Delivering')
+                            @if ($deliveryStatus === 'Under Process') text-red-600
+                            @elseif($deliveryStatus === 'Delivering')
                                 text-orange-500
-                            @elseif($transactionHeader->shipmentStatus->status->StatusName === 'Delivered')
+                            @elseif($deliveryStatus === 'Delivered')
                                 text-green-600 @endif
                             ">
                                     {{ $transactionHeader->shipmentStatus->status->StatusName }}</h3>
@@ -88,6 +94,15 @@
                             Rp {{ $total }}
                         </h2>
                     </div>
+
+                    {{-- Change status button --}}
+                    @if ($buttonText)
+                        <form method="POST" action="{{ route('admin.updateTransactionStatus', $id) }}">
+                            @csrf
+                            <button type="submit"
+                                class="btn btn-secondary w-full font-normal normal-case px-14 my-2 text-lg rounded-none">{{ $buttonText }}</button>
+                        </form>
+                    @endif
                 </div>
 
             </div>

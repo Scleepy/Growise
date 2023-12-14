@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TransactionHeaderController;
 
 // USER ROUTE
 
@@ -61,6 +62,8 @@ Route::get('/admin/product', [ProductController::class, 'getAllProducts'])->name
 Route::get('/admin/transaction', [AdminController::class, 'transactions'])->name('admin.transactions');
 
 Route::get('/admin/transaction-detail/{id}', [AdminController::class, 'transactionDetails'])->name('admin.transactionDetails');
+
+Route::post('/admin/transaction/shipmentstatus', [TransactionHeaderController::class, 'updateTransactionStatus'])->name('admin.updateTransactionStatus');
 
 Route::get('/admin/new-product', [AdminController::class, 'newProduct'])->name('admin.newProduct');
 

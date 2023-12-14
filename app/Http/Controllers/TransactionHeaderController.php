@@ -52,4 +52,31 @@ class TransactionHeaderController extends Controller
 
         return $total;
     }
+
+    public function updateTransactionStatus(Request $request, $id)
+    {
+        dd($request);
+
+        $transactionHeader = TransactionHeader::findOrFail($id);
+
+        $currentStatusID = $transactionHeader->ShipmentStatusID;
+
+        switch ($currentStatusID) {
+            case 1:
+                $newStatusID = 2;
+                break;
+            case 2:
+                $newStatusID = 3;
+                break;
+            default:
+                $newStatusID = $currentStatusID;
+                break;
+        }
+
+        $transactionHeader->update(['ShipmentStatusID' => $newStatusID]);
+
+        $transactionDetails = $transactionHeader->transactionDetails;
+
+        return view('screens.admin.transaction-detail', compact('transactionHeader', 'transactionDetails'));
+    }
 }
