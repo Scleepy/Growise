@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\TransactionHeader;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -37,9 +38,16 @@ class AdminController extends Controller
         return view('screens.admin.transaction', compact('transactions'));
     }
 
-    public function transactionDetails()
+    public function transactionDetails($id)
     {
-        return view('screens.admin.transaction-detail');
+        $thc = new TransactionHeaderController();
+        $tdc = new TransactionDetailsController();
+
+        $transactionHeader = $thc->getTransactionByID($id);
+
+        $transactionDetails = $tdc->getTransactionDetailsByID($id);
+
+        return view('screens.admin.transaction-detail', compact('transactionHeader', 'transactionDetails'));
     }
 
     public function newProduct()

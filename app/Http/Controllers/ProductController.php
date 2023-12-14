@@ -97,10 +97,10 @@ class ProductController extends Controller
     private function generateSlug($string) {
         $string = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
         $string = preg_replace('/[^a-zA-Z0-9]/', ' ', $string);
-        
+
         $string = strtolower($string);
         $string = trim(preg_replace('/\s+/', '-', $string), '-');
-        
+
         return $string;
     }
 

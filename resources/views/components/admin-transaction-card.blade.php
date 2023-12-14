@@ -1,4 +1,4 @@
-<a href=""
+<a href="{{ route('admin.transactionDetails', ['id' => $transaction->id]) }}"
     class="w-full h-fit flex flex-row justify-between items-center p-4 border-b border-black bg-primary font-josefinsans hover:bg-primaryDark transition duration-400 cursor-pointer">
 
     <!-- Transaction Information -->

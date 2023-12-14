@@ -60,7 +60,7 @@ Route::get('/admin/product', [ProductController::class, 'getAllProducts'])->name
 
 Route::get('/admin/transaction', [AdminController::class, 'transactions'])->name('admin.transactions');
 
-Route::get('/admin/transaction-detail', [AdminController::class, 'transactionDetails'])->name('admin.transactionDetails');
+Route::get('/admin/transaction-detail/{id}', [AdminController::class, 'transactionDetails'])->name('admin.transactionDetails');
 
 Route::get('/admin/new-product', [AdminController::class, 'newProduct'])->name('admin.newProduct');
 

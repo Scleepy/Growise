@@ -39,6 +39,13 @@ class TransactionHeaderController extends Controller
         return $transactions;
     }
 
+    public function getTransactionByID($id)
+    {
+        $transaction = TransactionHeader::findOrFail($id);
+
+        return $transaction;
+    }
+
     public function getTransactionTotal($transaction)
     {
         $total = $transaction->transactionDetails->sum('Subtotal');
