@@ -34,7 +34,25 @@
                     <h4 class="text-xl">Qty</h4>
                 </div>
 
-                {{-- <x-item-card :imgSrc="$imgSrc" /> --}}
+                <div class="flex flex-col gap-6 mt-8">
+                    @foreach ($transactionDetails as $item)
+                        <div class="flex flex-row justify-between w-full">
+                            <div class="flex">
+                                <img src="{{ asset('image/products/' . $item->product->ProductImage) }}"
+                                    alt="{{ $item->product->ProductName }}" class="w-24 h-24 object-cover">
+                                <div class="pl-4 flex flex-col gap-2 justify-center">
+                                    <h1 class="leading-none text-lg">{{ $item->product->ProductName }}
+                                    </h1>
+                                    <p class="leading-none text-sm">Note: {{ $item->product->ProductName }}</p>
+                                    <h1 class="text-secondary">Rp. {{ number_format($item->Subtotal) }}</h1>
+                                </div>
+                            </div>
+                            <div class="flex w-[35px] flex-row justify-center items-center">
+                                <h1 class="text-secondary text-xl">{{ $item->Quantity }}</h1>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
 
             <div class="w-1/3 flex items-start justify-center">
