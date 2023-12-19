@@ -63,7 +63,7 @@ Route::get('/admin/transaction', [AdminController::class, 'transactions'])->name
 
 Route::get('/admin/transaction-detail/{id}', [AdminController::class, 'transactionDetails'])->name('admin.transactionDetails');
 
-Route::post('/admin/transaction/shipmentstatus', [TransactionHeaderController::class, 'updateTransactionStatus'])->name('admin.updateTransactionStatus');
+Route::post('/admin/transaction/shipmentstatus/{id}', [TransactionHeaderController::class, 'updateTransactionStatus'])->name('admin.updateTransactionStatus');
 
 Route::get('/admin/new-product', [AdminController::class, 'newProduct'])->name('admin.newProduct');
 

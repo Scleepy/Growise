@@ -96,7 +96,7 @@
                             @foreach ($td[$item->id] as $tdItem)
                                 <div class="flex flex-col gap-6">
                                     <div class="flex">
-                                        <img src="{{ asset($tdItem->product->ProductImage) }}"
+                                        <img src="{{ asset('image/products/' . $tdItem->product->ProductImage) }}"
                                             alt="{{ $tdItem->product->ProductName }}" class="w-24 h-24 object-cover">
                                         <div class="pl-4 flex flex-col gap-2 justify-center">
                                             <h1 class="leading-none text-lg">{{ $tdItem->product->ProductName }}

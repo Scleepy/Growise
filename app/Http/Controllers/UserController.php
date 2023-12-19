@@ -104,7 +104,7 @@ class UserController extends Controller
     public function getHistoryTransaction()
     {
         $user = auth()->user();
-        $th = TransactionHeader::where('UserID', $user->id)->get();
+        $th = TransactionHeader::where('UserID', $user->id)->orderBy('TransactionDate', 'desc')->get();
         $tdAll = [];
 
         foreach ($th as $item) {

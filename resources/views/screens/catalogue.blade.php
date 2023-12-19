@@ -98,7 +98,7 @@
                             <div class="w-[225px] aspect-[3/4] flex flex-col bg-[#EAE5D5] border border-black">
 
                                 <!-- Product Image -->
-                                <img class="w-full h-full object-cover" src="{{ asset($product->ProductImage) }}"
+                                <img class="w-full h-full object-cover" src="{{ asset('image/products/' . $product->ProductImage) }}"
                                     alt="Product Image" />
 
                                 <!-- Product Information -->

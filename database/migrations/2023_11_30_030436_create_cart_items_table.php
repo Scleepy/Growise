@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
             $table->integer('Quantity');
-            $table->string('ItemNotes');
+            $table->string('ItemNotes')->nullable();
             $table->decimal('Subtotal', 10, 2);
             $table->timestamps();
 

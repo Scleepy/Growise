@@ -10,15 +10,15 @@
 
             <!-- Product Images -->
             <div class="w-1/3 h-screen flex flex-col">
-                <img src="{{ asset($product->ProductImage) }}" class="w-full aspect-square" />
+                <img src="{{ asset('image/products/' . $product->ProductImage) }}" class="w-full aspect-square" />
 
                 <!-- Gallery Select -->
                 <!-- TODO: Allow users to select pictures in gallery -->
                 <div class="w-full flex flex-row justify-between my-2">
-                    <img src="{{ asset($product->ProductImage) }}" class="w-1/5 aspect-square" />
-                    <img src="{{ asset($product->ProductImage) }}" class="w-1/5 aspect-square" />
-                    <img src="{{ asset($product->ProductImage) }}" class="w-1/5 aspect-square" />
-                    <img src="{{ asset($product->ProductImage) }}" class="w-1/5 aspect-square" />
+                    <img src="{{ asset('image/products/' . $product->ProductImage) }}" class="w-1/5 aspect-square" />
+                    <img src="{{ asset('image/products/' . $product->ProductImage) }}" class="w-1/5 aspect-square" />
+                    <img src="{{ asset('image/products/' . $product->ProductImage) }}" class="w-1/5 aspect-square" />
+                    <img src="{{ asset('image/products/' . $product->ProductImage) }}" class="w-1/5 aspect-square" />
                 </div>
             </div>
 

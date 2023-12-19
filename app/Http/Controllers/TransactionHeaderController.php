@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\ShipmentStatus;
 use App\Models\TransactionHeader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,11 +56,10 @@ class TransactionHeaderController extends Controller
 
     public function updateTransactionStatus(Request $request, $id)
     {
-        dd($request);
-
+        $shipmentStatus = ShipmentStatus::findOrFail($id);
         $transactionHeader = TransactionHeader::findOrFail($id);
 
-        $currentStatusID = $transactionHeader->ShipmentStatusID;
+        $currentStatusID = $shipmentStatus->StatusID;
 
         switch ($currentStatusID) {
             case 1:
@@ -73,10 +73,9 @@ class TransactionHeaderController extends Controller
                 break;
         }
 
-        $transactionHeader->update(['ShipmentStatusID' => $newStatusID]);
+        $shipmentStatus->update(['StatusID' => $newStatusID]);
 
         $transactionDetails = $transactionHeader->transactionDetails;
-
         return view('screens.admin.transaction-detail', compact('transactionHeader', 'transactionDetails'));
     }
 }
