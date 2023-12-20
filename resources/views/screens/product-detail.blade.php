@@ -55,7 +55,7 @@
 
                 <!-- Price-related -->
                 <div class="w-full flex flex-row gap-4 items-end font-josefinsans">
-                    <h1 class="text-red-500 text-4xl">{{ $product->Price }}</h1>
+                    <h1 class="text-red-500 text-4xl">{{ 'Rp ' . number_format($product->Price, 2, ',', '.') }}</h1>
                     {{-- <h1 class="text-gray-500/[0.5] line-through text-xl">Rp 55.000</h1>
                         <h1 class="text-red-500 text-xl">-45%</h1> --}}
                 </div>
@@ -94,7 +94,7 @@
 
                         <div class="w-full flex flex-row justify-between">
                             <label>Quantity</label>
-                            <input type="number" name="quantity"
+                            <input type="number" name="quantity" id="quantityInput"
                                 class="input bg-inherit border border-black rounded-none w-16 h-10 outline-none">
                         </div>
 
@@ -105,7 +105,7 @@
 
                         <div class="w-full flex flex-row justify-between">
                             <label>Subtotal</label>
-                            <h3>{{ $product->Price }}</h3>
+                            <h3 id="subtotalDisplay">{{ 'Rp ' . number_format($product->Price, 2, ',', '.') }}</h3>
                         </div>
 
                         <div class="w-full flex flex-col justify-between">
@@ -128,4 +128,33 @@
             </div>
         </div>
     </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function updateSubtotal() {
+
+                var quantity = document.getElementById('quantityInput');
+                var subtotalDisplay = document.getElementById('subtotalDisplay');
+
+                if (!quantity || !subtotalDisplay) {
+                    console.error('Quantity input or subtotal display not found.');
+                    return;
+                }
+
+                var quantityValue = parseFloat(quantity.value) || 0;
+
+                var subtotal = quantityValue * {{ $product->Price }};
+
+                subtotalDisplay.innerText = 'Rp ' + subtotal.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+            }
+
+            var quantityInput = document.getElementById('quantityInput');
+            if (quantityInput) {
+                quantityInput.addEventListener('input', updateSubtotal);
+            } else {
+                console.error('Quantity input not found.');
+            }
+        });
+    </script>
 @endsection
