@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
 
     // history transaction
     Route::get('/order', [UserController::class, 'getHistoryTransaction'])->name("userGetHistoryTransaction");
+    Route::get('/order/{status}', [UserController::class, 'getHistoryTransaction'])->name("userGetHistoryTransactionFiltered");
 
     Route::get('/cart', [CartItemController::class, 'getItemsByCartId'])->name('cart');
     Route::delete('/cart/{cartItem}', [CartItemController::class, 'destroy'])->name('cartItemDestroy');

@@ -30,10 +30,18 @@
 
             <div class="bg-white shadow-lg p-10 gap-4 flex flex-col font-semibold w-[80%]">
                 <ul class="flex gap-2">
-                    <li><a href="/order" class="w-full border-b-2 border-accent text-accent">All</a></li>
-                    <li><a href="/order/process">Processing</a></li>
-                    <li><a href="/order/ship">Shipped</a></li>
-                    <li><a href="/order/fulfill">Fulfilled</a></li>
+                    <li><a href="{{ route('userGetHistoryTransaction') }}"
+                            class="w-full {{ Request::is('order') ? 'border-b-2 border-accent text-accent' : '' }}">All</a>
+                    </li>
+                    <li><a href="{{ route('userGetHistoryTransactionFiltered', 'processing') }}"
+                            class="w-full {{ Request::is('order/processing') ? 'border-b-2 border-accent text-accent' : '' }}">Processing</a>
+                    </li>
+                    <li><a href="{{ route('userGetHistoryTransactionFiltered', 'delivering') }}"
+                            class="w-full {{ Request::is('order/delivering') ? 'border-b-2 border-accent text-accent' : '' }}">Delivering</a>
+                    </li>
+                    <li><a href="{{ route('userGetHistoryTransactionFiltered', 'delivered') }}"
+                            class="w-full {{ Request::is('order/delivered') ? 'border-b-2 border-accent text-accent' : '' }}">Delivered</a>
+                    </li>
                 </ul>
 
                 <div class="flex w-full gap-4 justify-center items-center">
@@ -101,7 +109,8 @@
                                         <div class="pl-4 flex flex-col gap-2 justify-center">
                                             <h1 class="leading-none text-lg">{{ $tdItem->product->ProductName }}
                                             </h1>
-                                            <p class="leading-none text-sm"><span class="text-secondary">Notes:</span> {{ $tdItem->ItemNotes }}</p>
+                                            <p class="leading-none text-sm"><span class="text-secondary">Notes:</span>
+                                                {{ $tdItem->ItemNotes }}</p>
                                             <p class="leading-none text-sm">{{ $tdItem->Quantity }} x Rp.
                                                 {{ number_format($tdItem->product->Price) }}</p>
                                             <h1 class="text-secondary">Rp. {{ number_format($tdItem->Subtotal) }}
