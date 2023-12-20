@@ -38,6 +38,7 @@ Route::get('/catalogue/{categorySlug}/{productSlug}', [ProductController::class,
 
 // history transaction
 Route::get('/order', [UserController::class, 'getHistoryTransaction'])->name("userGetHistoryTransaction");
+Route::get('/order/{status}', [UserController::class, 'getHistoryTransaction'])->name('userGetHistoryTransactionFiltered');
 
 // cart and payment
 Route::post('/cart', [CartItemController::class, 'addToCartOrUpdateQuantity'])->name('addToCartOrUpdateQuantity');

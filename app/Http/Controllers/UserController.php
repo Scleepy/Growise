@@ -101,10 +101,18 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function getHistoryTransaction()
+    public function getHistoryTransaction($status = null)
     {
         $user = auth()->user();
-        $th = TransactionHeader::where('UserID', $user->id)->orderBy('TransactionDate', 'desc')->get();
+        $query = TransactionHeader::where('UserID', $user->id)->orderBy('TransactionDate', 'desc');
+
+        if ($status !== null) {
+            $query->whereHas('shipmentStatus.status', function ($q) use ($status) {
+                $q->where('StatusName', $status);
+            });
+        }
+
+        $th = $query->get();
         $tdAll = [];
 
         foreach ($th as $item) {
