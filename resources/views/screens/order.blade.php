@@ -44,27 +44,27 @@
                     </li>
                 </ul>
 
-                <div class="flex w-full gap-4 justify-center items-center">
+                <form method="GET" action="/order" class="flex w-full gap-4 justify-center items-center">
                     <div class="relative flex justify-center items-center w-full">
                         <input type="text" name="search_order" placeholder="Search"
                             class="py-1 px-4 bg-white border-slate-950 border-2 outline-none w-full">
 
                         <div class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4">
-                            <a href="/"><img src="<?= asset('icon/search.svg') ?>" alt=""></a>
+                            <button type="submit"><img src="<?= asset('icon/search.svg') ?>" alt=""></button>
                         </div>
                     </div>
 
                     <div class="w-full">
                         <select
-                            class="focus:outline-none border-2 rounded-none bg-transparent border-black select select-sm h-[2.3rem] w-full">
-                            <option disabled selected>Select Category</option>
-                            <option>Reusable Items</option>
-                            <option>Home Goods</option>
-                            <option>Personal Care</option>
-                            <option>Fashion</option>
-                            <option>Energy Solutions</option>
-                            <option>Up/Recycled Goods</option>
-                            <option>Food</option>
+                            name="category" class="focus:outline-none border-2 rounded-none bg-transparent border-black select select-sm h-[2.3rem] w-full">
+                            <option value="" selected>Select Category</option>
+                            <option value="1">Reusable Items</option>
+                            <option value="2">Home Goods</option>
+                            <option value="3">Personal Care</option>
+                            <option value="4">Fashion</option>
+                            <option value="5">Energy Solutions</option>
+                            <option value="6">Up/Recycled Goods</option>
+                            <option value="7">Food</option>
                         </select>
                     </div>
 
@@ -79,7 +79,7 @@
                             </style>
                         </div>
                     </div>
-                </div>
+                </form>
 
                 <div class="flex flex-col gap-6 mt-8">
                     @foreach ($th as $item)
