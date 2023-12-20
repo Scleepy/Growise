@@ -12,9 +12,15 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
-    public function getAllProducts()
+    public function getAllProducts(Request $request)
     {
-        $products = Product::all();
+        $query = $request->input('search_product');
+
+        if($query ?? false){
+            $products = Product::where('ProductName', 'LIKE', '%' . $query . '%')->get();
+        } else {
+            $products = Product::all();
+        }
 
         if (Auth::check() && Auth::user()->IsAdmin) {
             return view('screens.admin.product', compact('products'));

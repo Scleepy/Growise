@@ -89,14 +89,14 @@
         @endif
     </ul>
 
-    <form action="">
+    <form action="/catalogue">
         <div class="relative flex justify-center items-center">
             <input type="text" name="search_product" placeholder="Search"
                 class="rounded-xl py-1 px-4 bg-bg border-slate-950 border-2 outline-none">
 
-            <div class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4">
+            <button  class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4">
                 <a href="/"><img src="<?= asset('icon/search.svg') ?>" alt=""></a>
-            </div>
+            </button>
         </div>
     </form>
 
