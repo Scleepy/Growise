@@ -14,7 +14,7 @@
                         @foreach ($cartItem as $item)
                             <div class="p-5 w-full flex justify-between items-center">
                                 <div class="flex w-[65%]">
-                                    <img src="{{ asset($item->product->ProductImage) }}"
+                                    <img src="{{ asset('image/products/' . $item->product->ProductImage) }}"
                                         alt="{{ $item->product->ProductName }}" class="w-20 h-20">
                                     <div class="pl-4 py-1 flex flex-col justify-between">
                                         <h1 class="leading-none text-lg">{{ $item->product->ProductName }}</h1>

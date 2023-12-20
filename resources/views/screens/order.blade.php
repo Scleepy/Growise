@@ -101,6 +101,7 @@
                                         <div class="pl-4 flex flex-col gap-2 justify-center">
                                             <h1 class="leading-none text-lg">{{ $tdItem->product->ProductName }}
                                             </h1>
+                                            <p class="leading-none text-sm"><span class="text-secondary">Notes:</span> {{ $tdItem->ItemNotes }}</p>
                                             <p class="leading-none text-sm">{{ $tdItem->Quantity }} x Rp.
                                                 {{ number_format($tdItem->product->Price) }}</p>
                                             <h1 class="text-secondary">Rp. {{ number_format($tdItem->Subtotal) }}

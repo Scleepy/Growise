@@ -116,7 +116,7 @@
 
                         <!-- Buttons -->
                         <div class="flex flex-col gap-2 mt-2">
-                            <button type="submit"
+                            <button type="submit" name="buyNow"
                                 class="btn btn-secondary w-full font-normal normal-case px-14 text-lg rounded-none">Buy
                                 Now</button>
                             <button type="submit"

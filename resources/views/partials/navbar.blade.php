@@ -21,10 +21,10 @@
             @if (auth()->user()->IsAdmin == true)
             <a href="/admin/dashboard">Home</a>
             @else
-            <a href="/admin/dashboard">Home</a>
+            <a href="/">Home</a>
             @endif
         @else
-            <a href="/admin/dashboard">Home</a>
+            <a href="/">Home</a>
         @endif
         </li>
         <div class="dropdown dropdown-hover">
@@ -42,10 +42,10 @@
             </ul>
         </div>
         <li>
-            <a href="/contact-us">Contact Us</a>
+            <a href="/#contact-us">Contact Us</a>
         </li>
         <li>
-            <a href="/about-us">About Us</a>
+            <a href="/#about-us">About Us</a>
         </li>
     </ul>
 

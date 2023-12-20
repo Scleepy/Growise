@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('Quantity');
             $table->decimal('Subtotal', 10, 2);
+            $table->string('ItemNotes')->nullable();
             $table->timestamps();
 
             $table->unsignedBigInteger('TransactionHeaderID');

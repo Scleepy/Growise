@@ -11,6 +11,7 @@ class TransactionDetails extends Model
 
     protected $fillable = [
         'Quantity',
+        'ItemNotes',
         'Subtotal',
         'TransactionHeaderID',
         'ProductID',

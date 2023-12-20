@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-    <div>
+    <div class="scroll-smooth">
         <div class="hero min-h-screen" style="background-image: url({{ asset('image/hero.png') }})">
             <div class="hero-content text-center text-neutral-content">
                 <div class="max-w-lg">

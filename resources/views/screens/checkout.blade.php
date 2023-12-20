@@ -18,7 +18,7 @@
             <p class="text-xl">Order Summary</p>
             @foreach ($cartItems as $item)
                 <div class="flex gap-4 bg-white p-4 justify-start items-center w-auto shadow-lg">
-                    <img src="{{ asset($item->product->ProductImage) }}" alt="{{ $item->product->ProductName }}"
+                    <img src="{{ asset('image/products/' . $item->product->ProductImage) }}" alt="{{ $item->product->ProductName }}"
                         class="w-28 h-28">
 
                     <div class="flex flex-col gap-1">

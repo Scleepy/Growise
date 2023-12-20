@@ -14,6 +14,8 @@ class CartItemController extends Controller
     {
         if ($request->has('updateQuantity')) {
             return $this->updateQuantity($request);
+        } else if($request->has('buyNow')){
+            return $this->buyNow($request);
         } else {
             return $this->addToCart($request);
         }
@@ -46,9 +48,36 @@ class CartItemController extends Controller
 
         $this->updatePrice($cart);
 
-        $items = CartItem::where('CartID', $cart->id)->get();
+        return back();
+    }
 
-        return view('screens.cart', ['cartItem' => $items, 'cart' => $cart])->with('message', 'Item Inserted!');
+    public function buyNow(Request $request){
+        $product = Product::findOrFail($request->input('product_id'));
+        $cartContoller = new CartController();
+        $cart = $cartContoller->create();
+
+        $fields = $request->validate([
+            'quantity' => 'required|numeric|min:1',
+            'notes' => 'nullable|string',
+        ]);
+
+        if ($fields['quantity'] > $product->StockQuantity) {
+            return redirect()->with('message', 'Out of limit');
+        }
+
+        $productData = [
+            'Quantity' => $fields['quantity'],
+            'ItemNotes' => $fields['notes'],
+            'Subtotal' => $product->Price * $fields['quantity'],
+            'CartID' => $cart->id,
+            'ProductID' => $product->id,
+        ];
+
+        CartItem::create($productData);
+
+        $this->updatePrice($cart);
+
+        return redirect('/cart');
     }
 
     private function updatePrice(Cart $cart)

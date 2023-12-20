@@ -12,8 +12,8 @@ use App\Http\Controllers\TransactionHeaderController;
 // USER ROUTE
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('aboutUs');
-Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contactUs');
+// Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('aboutUs');
+// Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contactUs');
 
 // user login + register
 Route::middleware(['auth'])->group(function () {

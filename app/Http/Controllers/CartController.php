@@ -62,6 +62,7 @@ class CartController extends Controller
         foreach ($cartItem as $item) {
             $fields = [
                 'Quantity' => $item->Quantity,
+                'ItemNotes' => $item->ItemNotes,
                 'Subtotal' => $item->Subtotal,
                 'TransactionHeaderID' => $th->id,
                 'ProductID' => $item->ProductID,
