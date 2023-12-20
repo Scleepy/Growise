@@ -15,8 +15,8 @@
             <!-- Transaction Information -->
             <div class="flex flex-col">
                 <h3 class="text-2xl">{{ $transaction->user->FullName }}</h3>
-                <h3 class="text-3xl text-secondary">Rp
-                    {{ app('App\Http\Controllers\TransactionHeaderController')->getTransactionTotal($transaction) }}
+                <h3 class="text-3xl text-secondary">
+                    Rp {{ number_format(app('App\Http\Controllers\TransactionHeaderController')->getTransactionTotal($transaction), 0, ',', ',') }}
                 </h3>
             </div>
 

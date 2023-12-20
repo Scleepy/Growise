@@ -11,6 +11,10 @@ class AdminController extends Controller
 
     public function home()
     {
+        if(auth()->user()->IsAdmin == false){
+            abort(403, 'Unauthorized Action');
+        }
+
         return view('screens.admin.dashboard');
     }
 
@@ -26,11 +30,19 @@ class AdminController extends Controller
 
     public function products()
     {
+        if(auth()->user()->IsAdmin == false){
+            abort(403, 'Unauthorized Action');
+        }
+
         return view('screens.admin.product');
     }
 
     public function transactions()
     {
+        if(auth()->user()->IsAdmin == false){
+            abort(403, 'Unauthorized Action');
+        }
+
         $thc = new TransactionHeaderController();
 
         $transactions = $thc->getAllTransactions();
@@ -40,6 +52,10 @@ class AdminController extends Controller
 
     public function transactionDetails($id)
     {
+        if(auth()->user()->IsAdmin == false){
+            abort(403, 'Unauthorized Action');
+        }
+
         $thc = new TransactionHeaderController();
         $tdc = new TransactionDetailsController();
 
@@ -52,11 +68,19 @@ class AdminController extends Controller
 
     public function newProduct()
     {
+        if(auth()->user()->IsAdmin == false){
+            abort(403, 'Unauthorized Action');
+        }
+
         return view('screens.admin.newproduct');
     }
 
     public function editProduct($id)
     {
+        if(auth()->user()->IsAdmin == false){
+            abort(403, 'Unauthorized Action');
+        }
+
         $product = Product::findOrFail($id);
 
         return view('screens.admin.editproduct', compact('product'));

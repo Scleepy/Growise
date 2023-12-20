@@ -41,6 +41,9 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        if(auth()->user()->IsAdmin == false){
+            abort(403, 'Unauthorized Action');
+        }
 
         $fields = $request->validate([
             'name' => 'required|string',
@@ -106,11 +109,19 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        if(auth()->user()->IsAdmin == false){
+            abort(403, 'Unauthorized Action');
+        }
+
         return view('screens.admin.editproduct', ['product' => $product]);
     }
 
     public function update(Request $request, $id)
     {
+        if(auth()->user()->IsAdmin == false){
+            abort(403, 'Unauthorized Action');
+        }
+
         $product = Product::findOrFail($id);
 
         $validator = Validator::make($request->all(), [
@@ -172,6 +183,10 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
+        if(auth()->user()->IsAdmin == false){
+            abort(403, 'Unauthorized Action');
+        }
+
         $product->delete();
         return redirect('/admin/product');
     }

@@ -26,36 +26,23 @@ Route::middleware(['auth'])->group(function () {
     // history transaction
     Route::get('/order', [UserController::class, 'getHistoryTransaction'])->name("userGetHistoryTransaction");
     Route::get('/order/{status}', [UserController::class, 'getHistoryTransaction'])->name("userGetHistoryTransactionFiltered");
-
     Route::get('/cart', [CartItemController::class, 'getItemsByCartId'])->name('cart');
     Route::delete('/cart/{cartItem}', [CartItemController::class, 'destroy'])->name('cartItemDestroy');
-
     Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
     Route::post('/checkout/payment', [CartController::class, 'payment'])->name('payment');
 
     // ADMIN ROUTE
     Route::get('/admin', [AdminController::class, 'loginView'])->name('admin.loginView');
-
     Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
-
     Route::get('/admin/dashboard', [AdminController::class, 'home'])->name('admin.home');
-
     Route::get('/admin/product', [ProductController::class, 'getAllProducts'])->name('admin.products');
-
     Route::get('/admin/transaction', [AdminController::class, 'transactions'])->name('admin.transactions');
-
     Route::get('/admin/transaction-detail/{id}', [AdminController::class, 'transactionDetails'])->name('admin.transactionDetails');
-
     Route::post('/admin/transaction/shipmentstatus/{id}', [TransactionHeaderController::class, 'updateTransactionStatus'])->name('admin.updateTransactionStatus');
-
     Route::get('/admin/new-product', [AdminController::class, 'newProduct'])->name('admin.newProduct');
-
     Route::get('/admin/edit-product/{id}', [AdminController::class, 'editProduct'])->name('admin.editProduct');
-
     Route::delete('/admin/remove-product/{product}', [ProductController::class, 'destroy'])->name('destroy');
-
     Route::post('/product/add', [ProductController::class, 'store'])->name('product.store');
-
     Route::post('/product/edit/{id}', [ProductController::class, 'update'])->name('product.update');
 });
 

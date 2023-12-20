@@ -109,7 +109,7 @@
                     <div class="w-full flex flex-row justify-between">
                         <h2 class="text-xl">Total Amount</h2>
                         <h2 class="text-xl text-secondary">
-                            Rp {{ $total }}
+                            Rp {{ number_format($total, 0, ',', ',') }}
                         </h2>
                     </div>
 
