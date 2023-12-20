@@ -133,7 +133,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             function updateSubtotal() {
-
                 var quantity = document.getElementById('quantityInput');
                 var subtotalDisplay = document.getElementById('subtotalDisplay');
 
@@ -143,6 +142,12 @@
                 }
 
                 var quantityValue = parseFloat(quantity.value) || 0;
+
+                // Prevent quantity from going below 0
+                if (quantityValue < 0) {
+                    quantityValue = 0;
+                    quantity.value = '0'; // Update input field value
+                }
 
                 var subtotal = quantityValue * {{ $product->Price }};
 
