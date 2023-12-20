@@ -1,11 +1,31 @@
 <div class="flex gap-6 justify-around items-center p-6 navbar">
-    <a href="/">
-        <h1 class="font-medium text-4xl">Growise</h1>
-    </a>
+    @if (auth()->check())
+        @if (auth()->user()->IsAdmin == true)
+            <a href="/admin/dashboard">
+                <h1 class="font-medium text-4xl">Growise</h1>
+            </a>
+        @else
+            <a href="/">
+                <h1 class="font-medium text-4xl">Growise</h1>
+            </a>
+        @endif
+    @else
+        <a href="/">
+            <h1 class="font-medium text-4xl">Growise</h1>
+        </a>
+    @endif
 
     <ul class="flex gap-4">
         <li>
-            <a href="/">Home</a>
+        @if (auth()->check())
+            @if (auth()->user()->IsAdmin == true)
+            <a href="/admin/dashboard">Home</a>
+            @else
+            <a href="/admin/dashboard">Home</a>
+            @endif
+        @else
+            <a href="/admin/dashboard">Home</a>
+        @endif
         </li>
         <div class="dropdown dropdown-hover">
             <a tabindex="0" class="inline-flex gap-2" href="{{ route('products') }}">Catalogue

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('ProductImage');
             $table->json('GalleryImages');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->unsignedBigInteger('PromoID')->nullable();
 

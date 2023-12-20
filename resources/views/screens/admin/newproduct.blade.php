@@ -18,7 +18,7 @@
                     <label>Product Image</label>
                     {{-- <img src="{{ asset('image/toothbrush.png') }}" class="aspect-square w-1/2" /> --}}
                     <input type="file" id="productImage" name="productImage"
-                        class="file-input file-input-bordered file-input-sm rounded-none" />
+                        class="file-input file-input-bordered file-input-sm rounded-none"/>
 
                     @error('productImage')
                         <p class="text-red-500">{{ $message }}</p>
@@ -44,7 +44,7 @@
                 <div class="flex flex-col">
                     <label>Name</label>
                     <input type="text" placeholder="Name" id="name" name="name"
-                        class="input input-bordered input-primary rounded-none input-md" />
+                        class="input input-bordered input-primary rounded-none input-md" value="{{old('name')}}"/>
 
                     @error('name')
                         <p class="text-red-500">{{ $message }}</p>
@@ -54,7 +54,7 @@
                 <div class="flex flex-col">
                     <label>Price</label>
                     <input type="number" placeholder="Price" id="price" name="price"
-                        class="input input-bordered input-primary rounded-none input-md" />
+                        class="input input-bordered input-primary rounded-none input-md" value="{{old('price')}}"/>
 
                     @error('price')
                         <p class="text-red-500">{{ $message }}</p>
@@ -82,7 +82,7 @@
                 <div class="flex flex-col">
                     <label>Stock</label>
                     <input type="number" placeholder="Stock" id="stock" name="stock"
-                        class="input input-bordered input-primary rounded-none input-md" />
+                        class="input input-bordered input-primary rounded-none input-md" value="{{old('stock')}}"/>
 
                     @error('stock')
                         <p class="text-red-500">{{ $message }}</p>
@@ -92,7 +92,7 @@
                 <div class="flex flex-col">
                     <label>Product Description</label>
                     <textarea class="textarea rounded-none" placeholder="Write the product description here..." id="productDescription"
-                        name="productDescription"></textarea>
+                        name="productDescription">{{old('productDescription')}}</textarea>
 
                     @error('productDescription')
                         <p class="text-red-500">{{ $message }}</p>
@@ -102,7 +102,7 @@
                 <div class="flex flex-col">
                     <label>Impact Towards Environment</label>
                     <textarea class="textarea rounded-none" placeholder="Write its impact towards the environment here..." id="impact"
-                        name="impact"></textarea>
+                        name="impact">{{old('impact')}}</textarea>
                     @error('impact')
                         <p class="text-red-500">{{ $message }}</p>
                     @enderror
