@@ -95,7 +95,7 @@
                         <div class="w-full flex flex-row justify-between">
                             <label>Quantity</label>
                             <input type="number" name="quantity" id="quantityInput"
-                                class="input bg-inherit border border-black rounded-none w-16 h-10 outline-none">
+                                class="input bg-inherit border border-black rounded-none w-16 h-10 outline-none" min="1" value="1">
                         </div>
 
                         {{-- <div class="w-full flex flex-row justify-between">

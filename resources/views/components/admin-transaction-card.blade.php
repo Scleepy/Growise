@@ -27,7 +27,7 @@
 
             <!-- Transaction Status -->
             <div class="flex flex-col text-center">
-                <h4>Deivery Status</h4>
+                <h4>Delivery Status</h4>
                 <h3
                     class="text-2xl
                 @if ($transaction->shipmentStatus->status->StatusName === 'Processing') text-red-600
