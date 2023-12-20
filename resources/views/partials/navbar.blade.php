@@ -16,37 +16,77 @@
     @endif
 
     <ul class="flex gap-4">
-        <li>
         @if (auth()->check())
             @if (auth()->user()->IsAdmin == true)
-            <a href="/admin/dashboard">Home</a>
+                <li>
+                    <a href="/admin/dashboard">Home</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.products') }}">Products</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.transactions') }}">Transactions</a>
+                </li>
             @else
-            <a href="/">Home</a>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <div class="dropdown dropdown-hover">
+                    <a tabindex="0" class="inline-flex gap-2" href="{{ route('products') }}">Catalogue
+                        <img src="<?= asset('icon/drop_down.svg') ?>" alt="">
+                    </a>
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 w-52 font-josefinsans">
+                        <li><a href="{{ route('getProductsBySlug', ['slug' => 'reusable-items']) }}">Reusable Items</a>
+                        </li>
+                        <li><a href="{{ route('getProductsBySlug', ['slug' => 'home-goods']) }}">Home Goods</a></li>
+                        <li><a href="{{ route('getProductsBySlug', ['slug' => 'personal-care']) }}">Personal Care</a>
+                        </li>
+                        <li><a href="{{ route('getProductsBySlug', ['slug' => 'fashion']) }}">Fashion</a></li>
+                        <li><a href="{{ route('getProductsBySlug', ['slug' => 'energy-solutions']) }}">Energy
+                                Solutions</a></li>
+                        <li><a href="{{ route('getProductsBySlug', ['slug' => 'up-recycled-goods']) }}">Up/Recycled
+                                Goods</a>
+                        </li>
+                        <li><a href="{{ route('getProductsBySlug', ['slug' => 'food']) }}">Food</a></li>
+                    </ul>
+                </div>
+                <li>
+                    <a href="/#contact-us">Contact Us</a>
+                </li>
+                <li>
+                    <a href="/#about-us">About Us</a>
+                </li>
             @endif
         @else
-            <a href="/">Home</a>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <div class="dropdown dropdown-hover">
+                <a tabindex="0" class="inline-flex gap-2" href="{{ route('products') }}">Catalogue
+                    <img src="<?= asset('icon/drop_down.svg') ?>" alt="">
+                </a>
+                <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 w-52 font-josefinsans">
+                    <li><a href="{{ route('getProductsBySlug', ['slug' => 'reusable-items']) }}">Reusable Items</a>
+                    </li>
+                    <li><a href="{{ route('getProductsBySlug', ['slug' => 'home-goods']) }}">Home Goods</a></li>
+                    <li><a href="{{ route('getProductsBySlug', ['slug' => 'personal-care']) }}">Personal Care</a>
+                    </li>
+                    <li><a href="{{ route('getProductsBySlug', ['slug' => 'fashion']) }}">Fashion</a></li>
+                    <li><a href="{{ route('getProductsBySlug', ['slug' => 'energy-solutions']) }}">Energy
+                            Solutions</a></li>
+                    <li><a href="{{ route('getProductsBySlug', ['slug' => 'up-recycled-goods']) }}">Up/Recycled
+                            Goods</a>
+                    </li>
+                    <li><a href="{{ route('getProductsBySlug', ['slug' => 'food']) }}">Food</a></li>
+                </ul>
+            </div>
+            <li>
+                <a href="/#contact-us">Contact Us</a>
+            </li>
+            <li>
+                <a href="/#about-us">About Us</a>
+            </li>
         @endif
-        </li>
-        <div class="dropdown dropdown-hover">
-            <a tabindex="0" class="inline-flex gap-2" href="{{ route('products') }}">Catalogue
-                <img src="<?= asset('icon/drop_down.svg') ?>" alt="">
-            </a>
-            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 w-52 font-josefinsans">
-                <li><a href="{{ route('getProductsBySlug', ['slug' => 'reusable-items']) }}">Reusable Items</a></li>
-                <li><a href="{{ route('getProductsBySlug', ['slug' => 'home-goods']) }}">Home Goods</a></li>
-                <li><a href="{{ route('getProductsBySlug', ['slug' => 'personal-care']) }}">Personal Care</a></li>
-                <li><a href="{{ route('getProductsBySlug', ['slug' => 'fashion']) }}">Fashion</a></li>
-                <li><a href="{{ route('getProductsBySlug', ['slug' => 'energy-solutions']) }}">Energy Solutions</a></li>
-                <li><a href="{{ route('getProductsBySlug', ['slug' => 'up-recycled-goods']) }}">Up/Recycled Goods</a></li>
-                <li><a href="{{ route('getProductsBySlug', ['slug' => 'food']) }}">Food</a></li>
-            </ul>
-        </div>
-        <li>
-            <a href="/#contact-us">Contact Us</a>
-        </li>
-        <li>
-            <a href="/#about-us">About Us</a>
-        </li>
     </ul>
 
     <form action="">
