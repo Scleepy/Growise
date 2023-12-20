@@ -87,6 +87,8 @@ class CartController extends Controller
 
         $cart->update(['TotalAmount' => 0]);
 
+        sleep(2.5);
+
         return redirect('/')->with('success', 'Payment Successfully');
     }
 }

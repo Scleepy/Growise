@@ -68,7 +68,7 @@
                     <form action="{{ route('payment') }}" method="POST">
                         @csrf
                         <div class="w-full">
-                            <button type="submit" class="bg-secondary button btn-secondary p-2 mt-5 text-white w-full">Pay</button>
+                            <button id="btnSubmit" type="submit" onclick="paymentProcessingModal.showModal()" class="bg-secondary button btn-secondary p-2 mt-5 text-white w-full">Pay</button>
                         </div>
                     </form>
 
@@ -87,5 +87,31 @@
             </div>
         </div>
 
+        <dialog id="paymentProcessingModal" class="modal">
+            <div id="modalContent" class="modal-box w-96 h-96 bg-white p-4 flex flex-col items-center justify-center">
+                <div id="loadingGroup">
+                    <span class="loading loading-spinner w-48"></span>
+                    <h3 class="font-bold text-xl pt-10">Processing Payment...</h3>
+                </div>
+                <div id="successGroup" class="hidden">
+                    <img src="<?= asset('icon/success.svg') ?>" alt="" class="w-48 h-48">           
+                    <h3 class="font-bold text-xl pt-10">Payment Confirmed!</h3>
+                </div>
+            </div>
+            {{-- <form method="dialog" class="modal-backdrop">
+                <button id="closeButton"></button>
+            </form> --}}
+        </dialog>
+
+        <script>
+            const buttonSubmit = document.getElementById('btnSubmit');
+        
+            buttonSubmit.addEventListener('click', () => {
+                setTimeout(() => {
+                    document.getElementById('loadingGroup').style.display = 'none';
+                    document.getElementById('successGroup').style.display = 'block';
+                }, 1000);
+            });
+        </script>
     </div>
 @endsection
