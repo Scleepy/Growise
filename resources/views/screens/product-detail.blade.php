@@ -1,3 +1,7 @@
+@php
+    $galleryImages = json_decode($product->GalleryImages);
+@endphp
+
 @extends('layout.main')
 
 @section('content')
@@ -14,11 +18,10 @@
 
                 <!-- Gallery Select -->
                 <!-- TODO: Allow users to select pictures in gallery -->
-                <div class="w-full flex flex-row justify-between my-2">
-                    <img src="{{ asset('image/products/' . $product->ProductImage) }}" class="w-1/5 aspect-square" />
-                    <img src="{{ asset('image/products/' . $product->ProductImage) }}" class="w-1/5 aspect-square" />
-                    <img src="{{ asset('image/products/' . $product->ProductImage) }}" class="w-1/5 aspect-square" />
-                    <img src="{{ asset('image/products/' . $product->ProductImage) }}" class="w-1/5 aspect-square" />
+                <div class="w-full flex flex-row justify-start gap-7 my-2">
+                    @foreach($galleryImages as $image)
+                        <img src="{{ asset('image/products/' . $image) }}" class="w-1/5 aspect-square" />
+                    @endforeach
                 </div>
             </div>
 
